@@ -1,0 +1,20 @@
+/* 自定义样式 */
+   .header {
+       padding: 10px;
+   }
+
+   .nav-link {
+       margin: 0 10px;
+       text-decoration: none;
+       color: #ffffff; /* 白色文字 */
+   }
+
+   .footer {
+       position: fixed;
+       bottom: 0;
+       width: 100%;
+   }
+
+   .footer p {
+       margin: 0;
+   }
