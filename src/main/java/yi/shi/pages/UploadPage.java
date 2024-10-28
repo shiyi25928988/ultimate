@@ -2,6 +2,7 @@ package yi.shi.pages;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.Tag;
+import yi.shi.pages.element.Header;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -34,8 +35,8 @@ public class UploadPage {
                         title("上传文件"),
                         meta().withCharset("UTF-8"),
                         meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                        link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"),
-                        script().withSrc("https://cdn.jsdelivr.net/npm/toastify-js"),
+                        link().withRel("stylesheet").withHref("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.css"),
+                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.js"),
                         style("body {\n" +
                                 "                        font-family: Arial, sans-serif;\n" +
                                 "                        background-color: #f4f4f4;\n" +
@@ -118,7 +119,7 @@ public class UploadPage {
                                 "                            font-size: 14px;\n" +
                                 "                        }\n" +
                                 "                    }")
-                ),
+                ), Header.createHeader(),
                 body(
                         div(
                                 h1("上传文件"),

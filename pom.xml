@@ -22,21 +22,6 @@
       <version>jre-8</version>
     </dependency>
     <dependency>
-      <groupId>edu.uci.ics</groupId>
-      <artifactId>crawler4j</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jsoup</groupId>
-      <artifactId>jsoup</artifactId>
-      <version>1.18.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.htmlunit</groupId>
-      <artifactId>htmlunit</artifactId>
-      <version>4.4.0</version>
-    </dependency>
-    <dependency>
       <groupId>com.j2html</groupId>
       <artifactId>j2html</artifactId>
       <version>1.6.0</version>
