@@ -14,7 +14,7 @@ public class Head {
                 link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
                 link().withRel("stylesheet").withHref("styles.css"), // 引入自定义样式
                 script().withSrc("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"),
-                script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js").withType("text/javascript")
+                script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
         );
     }
 }

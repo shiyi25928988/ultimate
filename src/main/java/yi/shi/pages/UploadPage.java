@@ -37,6 +37,10 @@ public class UploadPage {
                         meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
                         link().withRel("stylesheet").withHref("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.css"),
                         script().withSrc("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.js"),
+                        link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
+                        link().withRel("stylesheet").withHref("styles.css"), // 引入自定义样式
+                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"),
+                        script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"),
                         style("body {\n" +
                                 "                        font-family: Arial, sans-serif;\n" +
                                 "                        background-color: #f4f4f4;\n" +
