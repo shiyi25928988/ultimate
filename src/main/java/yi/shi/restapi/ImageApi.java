@@ -1,6 +1,7 @@
 package yi.shi.restapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.eclipse.jetty.servlet.ServletHandler;
 import yi.shi.data.ImageUrl;
 import yi.shi.plinth.annotation.Properties;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -8,6 +9,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.JSON;
+import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.plinth.utils.json.JsonUtils;
 
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class ImageApi {
 
     @GET
     @HttpPath(value = "/api/deleteImages")
-    public JSON<String> deleteImages(){
+    public void deleteImages() throws IOException {
         Path dirPath = Paths.get(UPLOAD_DIRECTORY);
 
         try {
@@ -67,7 +69,7 @@ public class ImageApi {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new JSON<>("ok");
+        ServletHelper.getResponse().sendRedirect("/");
     }
 
 

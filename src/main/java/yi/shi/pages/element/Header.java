@@ -30,7 +30,7 @@ public class Header {
                                             li(a("Home").withClass("nav-link").withHref("/")),
                                             li(a("Upload").withClass("nav-link").withHref("/uploadpage")),
                                             li(a("Delete All").withClass("nav-link").withHref("/api/deleteImages")),
-                                            li(a("Contact").withClass("nav-link").withHref("/contact"))
+                                            li(a("Logout").withClass("nav-link").withHref("/api/logout"))
                                     ).withClass("right hide-on-med-and-down")
                             ).withClass("nav-wrapper")
                     ).withClass("navbar blue lighten-2"),
