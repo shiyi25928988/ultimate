@@ -7,6 +7,7 @@ import yi.shi.data.ImageUrl;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
+import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -21,6 +22,7 @@ import static j2html.TagCreator.*;
 public class ImageWallPage {
 
     @GET
+    @AUTH(authUrl = "/login")
     @HttpPath(value = "/")
     public HTML imageWallPage() throws Exception {
         HTML html = new HTML();
