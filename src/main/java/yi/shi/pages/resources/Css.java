@@ -25,4 +25,13 @@ public class Css {
         result.setData(this.getClass().getResourceAsStream("/static/css/materialize.min.css"));
         return result;
     }
+
+    @GET
+    @HttpPath(value = "/css/toastify.min.css")
+    public BINARY toastify() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream("/static/css/toastify.min.css"));
+        return result;
+    }
 }

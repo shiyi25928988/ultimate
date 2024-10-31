@@ -12,9 +12,11 @@ public class Head {
                 meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
                 title(title),
                 link().withRel("stylesheet").withHref("/css/materialize.min.css"),
+                link().withRel("stylesheet").withHref("/css/toastify.min.css"),
                 link().withRel("stylesheet").withHref("/css/styles.css"), // 引入自定义样式
                 script().withSrc("/js/jquery.min.js"),
-                script().withSrc("/js/materialize.min.js")
+                script().withSrc("/js/materialize.min.js"),
+                script().withSrc("/js/toastify-js")
         );
     }
 }

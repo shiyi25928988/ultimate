@@ -92,6 +92,7 @@ public class UserRegistryPage {
                         "                            success: function(response) {\n" +
                         "                                alert('用户注册成功！');\n" +
                         "                                console.log(response);\n" +
+                        "                                window.location.href = '/';" +
                         "                            },\n" +
                         "                            error: function(error) {\n" +
                         "                                alert('用户注册失败：' + error.responseText);\n" +

@@ -26,4 +26,13 @@ public class JavaScript {
         result.setData(this.getClass().getResourceAsStream("/static/js/materialize.min.js"));
         return result;
     }
+
+    @GET
+    @HttpPath(value = "/js/toastify-js")
+    public BINARY toastify() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream("/static/js/toastify-js.js"));
+        return result;
+    }
 }

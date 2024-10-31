@@ -2,6 +2,7 @@ package yi.shi.pages;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.Tag;
+import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -23,153 +24,6 @@ public class UploadPage {
         return html;
     }
 
-    private Tag page2(){
-        ContainerTag html = html(
-                head(
-                        meta().withCharset("UTF-8"),
-                        meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                        title("文件上传页面"),
-                        link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
-                        style("body {\n" +
-                                "                        background-color: #f4f4f4;\n" +
-                                "                        margin: 0;\n" +
-                                "                        padding: 0;\n" +
-                                "                        display: flex;\n" +
-                                "                        justify-content: center;\n" +
-                                "                        align-items: center;\n" +
-                                "                        height: 100vh;\n" +
-                                "                        flex-direction: column;\n" +
-                                "                    }\n" +
-                                "                    .container {\n" +
-                                "                        background-color: #fff;\n" +
-                                "                        padding: 20px;\n" +
-                                "                        border-radius: 8px;\n" +
-                                "                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" +
-                                "                        text-align: center;\n" +
-                                "                        max-width: 400px;\n" +
-                                "                        width: 90%;\n" +
-                                "                    }\n" +
-                                "                    h1 {\n" +
-                                "                        color: #333;\n" +
-                                "                        margin-bottom: 20px;\n" +
-                                "                    }\n" +
-                                "                    label {\n" +
-                                "                        display: block;\n" +
-                                "                        margin-bottom: 10px;\n" +
-                                "                        font-size: 18px;\n" +
-                                "                    }\n" +
-                                "                    input[type=\"file\"] {\n" +
-                                "                        padding: 10px;\n" +
-                                "                        border: 1px solid #ccc;\n" +
-                                "                        border-radius: 4px;\n" +
-                                "                        width: 100%;\n" +
-                                "                        margin-bottom: 20px;\n" +
-                                "                    }\n" +
-                                "                    input[type=\"submit\"] {\n" +
-                                "                        background-color: #007BFF;\n" +
-                                "                        color: #fff;\n" +
-                                "                        border: none;\n" +
-                                "                        padding: 10px 20px;\n" +
-                                "                        border-radius: 4px;\n" +
-                                "                        cursor: pointer;\n" +
-                                "                        font-size: 16px;\n" +
-                                "                        width: 100%;\n" +
-                                "                    }\n" +
-                                "                    input[type=\"submit\"]:hover {\n" +
-                                "                        background-color: #0056b3;\n" +
-                                "                    }\n" +
-                                "                    .progress-container {\n" +
-                                "                        margin-top: 20px;\n" +
-                                "                        width: 100%;\n" +
-                                "                    }\n" +
-                                "                    .progress-bar {\n" +
-                                "                        height: 20px;\n" +
-                                "                        background-color: #e0e0e0;\n" +
-                                "                        border-radius: 10px;\n" +
-                                "                        overflow: hidden;\n" +
-                                "                    }\n" +
-                                "                    .progress {\n" +
-                                "                        height: 100%;\n" +
-                                "                        width: 0;\n" +
-                                "                        background-color: #4caf50;\n" +
-                                "                        transition: width 0.5s;\n" +
-                                "                    }\n" +
-                                "                    @media (max-width: 600px) {\n" +
-                                "                        body {\n" +
-                                "                            padding: 20px;\n" +
-                                "                        }\n" +
-                                "                        .container {\n" +
-                                "                            padding: 15px;\n" +
-                                "                        }\n" +
-                                "                        h1 {\n" +
-                                "                            font-size: 24px;\n" +
-                                "                        }\n" +
-                                "                        label {\n" +
-                                "                            font-size: 16px;\n" +
-                                "                        }\n" +
-                                "                        input[type=\"file\"], input[type=\"submit\"] {\n" +
-                                "                            font-size: 14px;\n" +
-                                "                        }\n" +
-                                "                    }")
-                ),
-                body(
-                        div().withClass("container").with(
-                                h1("文件上传"),
-                                form().withId("uploadForm").withEnctype("multipart/form-data").with(
-                                        label("选择文件:").withFor("fileInput"),
-                                        input().withType("file").withId("fileInput").withName("file").isRequired(),
-                                        input().withType("submit").withValue("上传")
-                                ),
-                                div().withClass("progress-container").with(
-                                        div().withClass("progress-bar").with(
-                                                div().withClass("progress")
-                                        )
-                                )
-                        ),
-                        script().withSrc("https://code.jquery.com/jquery-3.6.0.min.js"),
-                        script("$(document).ready(function() {\n" +
-                                "                        $('#uploadForm').on('submit', function(event) {\n" +
-                                "                            event.preventDefault();\n" +
-                                "\n" +
-                                "                            const fileInput = $('#fileInput')[0];\n" +
-                                "                            const file = fileInput.files[0];\n" +
-                                "                            const formData = new FormData();\n" +
-                                "                            formData.append('file', file);\n" +
-                                "\n" +
-                                "                            const progress = $('.progress');\n" +
-                                "                            progress.css('width', '0%');\n" +
-                                "\n" +
-                                "                            $.ajax({\n" +
-                                "                                url: '/upload',\n" +
-                                "                                type: 'POST',\n" +
-                                "                                data: formData,\n" +
-                                "                                processData: false,\n" +
-                                "                                contentType: false,\n" +
-                                "                                xhr: function() {\n" +
-                                "                                    const xhr = new window.XMLHttpRequest();\n" +
-                                "                                    xhr.upload.addEventListener('progress', function(event) {\n" +
-                                "                                        if (event.lengthComputable) {\n" +
-                                "                                            const percentComplete = (event.loaded / event.total) * 100;\n" +
-                                "                                            progress.css('width', percentComplete + '%');\n" +
-                                "                                        }\n" +
-                                "                                    }, false);\n" +
-                                "                                    return xhr;\n" +
-                                "                                },\n" +
-                                "                                success: function(data) {\n" +
-                                "                                    alert('文件上传成功: ' + data.message);\n" +
-                                "                                },\n" +
-                                "                                error: function(error) {\n" +
-                                "                                    alert('文件上传失败: ' + error.responseText);\n" +
-                                "                                }\n" +
-                                "                            });\n" +
-                                "                        });\n" +
-                                "                    });")
-                )
-        );
-        return html;
-    }
-
-
     /**
      * Generates a ContainerTag representing the page.
      *
@@ -177,16 +31,7 @@ public class UploadPage {
      */
     private Tag page(){
         ContainerTag html = html(
-                head(
-                        title("上传文件"),
-                        meta().withCharset("UTF-8"),
-                        meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                        link().withRel("stylesheet").withHref("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.css"),
-                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/toastify-js/1.12.0/toastify.min.js"),
-                        link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
-                        link().withRel("stylesheet").withHref("styles.css"), // 引入自定义样式
-                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"),
-                        script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"),
+                Head.createHead("上传文件"),
                         style("body {\n" +
                                 "                        font-family: Arial, sans-serif;\n" +
                                 "                        background-color: #f4f4f4;\n" +
@@ -269,7 +114,7 @@ public class UploadPage {
                                 "                            font-size: 14px;\n" +
                                 "                        }\n" +
                                 "                    }")
-                ), Header.createHeader(),
+                , Header.createHeader(),
                 body(
                         div(
                                 h1("上传文件"),
