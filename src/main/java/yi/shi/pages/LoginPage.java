@@ -23,7 +23,7 @@ public class LoginPage {
 
     public static ContainerTag createLoginPage() {
         return html(
-                Head.createHead(),
+                Head.createHead("login"),
                 body(
                         div().withClass("container").with(
                                 div().withClass("row").with(
@@ -42,7 +42,12 @@ public class LoginPage {
                                                                         ),
                                                                         div().withClass("center").with(
                                                                                 button().withType("button").withClass("btn waves-effect waves-light").withText("登录").withId("loginButton")
+                                                                        ),
+                                                                        br(),
+                                                                        div().withClass("center").with(
+                                                                                a().withHref("/page/userRegistryPage").withText("没有账号？点我注册")
                                                                         )
+
                                                                 )
                                                         )
                                                 )

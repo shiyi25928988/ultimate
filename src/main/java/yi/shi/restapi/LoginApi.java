@@ -1,5 +1,6 @@
 package yi.shi.restapi;
 
+import com.google.inject.Inject;
 import yi.shi.data.LoginResult;
 import yi.shi.data.LoginUser;
 import yi.shi.plinth.annotation.http.HttpBody;
@@ -10,17 +11,25 @@ import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.auth.AuthHelper;
 import yi.shi.plinth.http.result.JSON;
 import yi.shi.plinth.servlet.ServletHelper;
+import yi.shi.service.UserService;
 
 import java.io.IOException;
 
 @HttpService
 public class LoginApi {
 
+    @Inject
+    UserService userService;
+
     @POST
     @HttpPath(value = "/api/login")
     public JSON<LoginResult> login(@HttpBody LoginUser loginUser) {
-        AuthHelper.login(loginUser, "user");
-        LoginResult result = new LoginResult("ok");
+        if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
+            AuthHelper.login(loginUser, "user");
+            LoginResult result = new LoginResult("LOGIN SUCCESS!");
+            return new JSON<>(result);
+        }
+        LoginResult result = new LoginResult("LOGIN FAILED!");
         return new JSON<>(result);
     }
 

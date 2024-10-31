@@ -6,15 +6,15 @@ import static j2html.TagCreator.*;
 
 public class Head {
 
-    public static ContainerTag createHead() {
+    public static ContainerTag createHead(String title) {
         return head(
                 meta().withCharset("UTF-8"),
                 meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
-                title("Your Website Title"),
-                link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
-                link().withRel("stylesheet").withHref("styles.css"), // 引入自定义样式
-                script().withSrc("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"),
-                script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+                title(title),
+                link().withRel("stylesheet").withHref("/css/materialize.min.css"),
+                link().withRel("stylesheet").withHref("/css/styles.css"), // 引入自定义样式
+                script().withSrc("/js/jquery.min.js"),
+                script().withSrc("/js/materialize.min.js")
         );
     }
 }
