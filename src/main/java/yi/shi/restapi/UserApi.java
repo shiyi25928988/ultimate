@@ -17,7 +17,7 @@ public class UserApi {
     UserAccountMapper userAccountMapper;
 
     @POST
-    @HttpPath("/user/add")
+    @HttpPath("/api/user/add")
     public JSON<Result<Integer>> addUser(@HttpBody UserAccount userAccount) {
         int res = userAccountMapper.insert(userAccount);
         return new JSON<>(Result.success(res));
