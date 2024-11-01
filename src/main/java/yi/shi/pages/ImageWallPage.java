@@ -22,7 +22,7 @@ import static j2html.TagCreator.*;
 public class ImageWallPage {
 
     @GET
-    @AUTH(authUrl = "/login")
+    @AUTH(authUrl = "/page/login")
     @HttpPath(value = "/")
     public HTML imageWallPage() throws Exception {
         HTML html = new HTML();
@@ -38,22 +38,16 @@ public class ImageWallPage {
     public static HtmlTag createImageWallPage() {
         // 创建 HTML 结构
         HtmlTag html = html(
-                head(
-                        meta().withCharset("UTF-8"),
-                        meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                        title("Image Wall"),
-                        link().withRel("stylesheet").withHref("https://cdn.bootcdn.net/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
-                        link().withRel("stylesheet").withHref("/styles.css"),
-                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"),
-                        script().withSrc("https://cdn.bootcdn.net/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-                ),Header.createHeader(),
+                Head.createHead("图片墙"),
+                Header.createHeader(),
                 body(
                         div(
                                 //h1("Image Wall"),
                                 div(div().withId("image-wall").withClass("row"))
                         ).withClass("container section"),
                         createScript()
-                ).withClass("grey lighten-4")
+                ).withClass("grey lighten-4"),
+                Footer.createFooter()
         );
 
         return html;

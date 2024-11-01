@@ -14,7 +14,7 @@ import static j2html.TagCreator.*;
 public class LoginPage {
 
     @GET
-    @HttpPath(value = "/login")
+    @HttpPath(value = "/page/login")
     public HTML loginPage()
     {
         HTML html = new HTML();
@@ -45,7 +45,7 @@ public class LoginPage {
                                                                         ),
                                                                         br(),
                                                                         div().withClass("center").with(
-                                                                                a().withHref("/page/userRegistryPage").withText("没有账号？点我注册")
+                                                                                a().withHref("/page/userRegistry").withText("没有账号？点我注册")
                                                                         )
 
                                                                 )

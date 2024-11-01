@@ -29,7 +29,7 @@ public class UploadApi {
 
 
     @POST
-    @HttpPath(value = "/upload")
+    @HttpPath(value = "/api/upload")
     public JSON<String> upload() throws Exception {
         HttpServletRequest request = ServletHelper.getRequest();
         if(ServletFileUpload.isMultipartContent(request)) {

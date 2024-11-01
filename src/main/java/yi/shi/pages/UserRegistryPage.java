@@ -1,6 +1,7 @@
 package yi.shi.pages;
 
 import j2html.tags.ContainerTag;
+import yi.shi.pages.element.Head;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -12,7 +13,7 @@ import static j2html.TagCreator.*;
 public class UserRegistryPage {
 
     @GET
-    @HttpPath(value = "/page/userRegistryPage")
+    @HttpPath(value = "/page/userRegistry")
     public HTML userRegistryPage() throws Exception {
         HTML html = new HTML();
         html.setHtmlContent(createUserRegistryPage().render());
@@ -20,14 +21,7 @@ public class UserRegistryPage {
     }
 
     public static ContainerTag createUserRegistryPage() {
-        ContainerTag head = head(
-                meta().withCharset("UTF-8"),
-                meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                title("用户注册"),
-                link().withRel("stylesheet").withHref("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"),
-                script().withSrc("https://code.jquery.com/jquery-3.6.0.min.js"),
-                script().withSrc("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-        );
+        ContainerTag head = Head.createHead("用户注册");
 
         ContainerTag form = form().withId("registrationForm").withClass("col s12").with(
                 div().withClass("row").with(

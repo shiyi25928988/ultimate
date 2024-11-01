@@ -120,7 +120,7 @@ public class UploadPage {
                                 h1("上传文件"),
                                 form(
                                         label("选择文件: "),
-                                        input().withType("file").withName("file").withId("fileInput"),
+                                        input().withType("file").withName("file").withId("fileInput").withCondMultiple(true),
                                         br(),
                                         input().withType("submit").withValue("上传")
                                 ).withMethod("post").withCondEnctype(true, "multipart/form-data").withAction("/upload").withId("uploadForm"),
@@ -135,7 +135,7 @@ public class UploadPage {
                                 "                        const fileInput = document.getElementById('fileInput');\n" +
                                 "\n" +
                                 "                        const xhr = new XMLHttpRequest();\n" +
-                                "                        xhr.open('POST', '/upload', true);\n" +
+                                "                        xhr.open('POST', '/api/upload', true);\n" +
                                 "                        xhr.upload.onprogress = function(event) {\n" +
                                 "                            if (event.lengthComputable) {\n" +
                                 "                                const percentCompleted = Math.round((event.loaded * 100) / event.total);\n" +

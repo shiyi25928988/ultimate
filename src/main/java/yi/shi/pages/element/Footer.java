@@ -6,10 +6,24 @@ import static j2html.TagCreator.*;
 
 public class Footer {
     public static ContainerTag createFooter() {
-        return footer(
-                div(
-                        p("Copyright © 2023 Your Company Name. All rights reserved.")
-                ).withClass("container center-align")
-        ).withClass("page-footer blue lighten-2");
+        return footer().withClass("page-footer").with(
+                div().withClass("container").with(
+                        div().withClass("row").with(
+                                div().withClass("col l6 s12").with(
+//                                        h5("社交媒体").withClass("white-text")
+//                                        ul().with(
+//                                                li(a("Facebook").withHref("https://facebook.com").withTarget("_blank")),
+//                                                li(a("Twitter").withHref("https://twitter.com").withTarget("_blank")),
+//                                                li(a("Instagram").withHref("https://instagram.com").withTarget("_blank"))
+//                                        )
+                                )
+                        )
+                ),
+                div().withClass("footer-copyright").with(
+                        div().withClass("container").withText(
+                                "© 2023 公司名称"
+                        )
+                )
+        );
     }
 }
