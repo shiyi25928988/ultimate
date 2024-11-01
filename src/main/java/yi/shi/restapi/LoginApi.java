@@ -37,6 +37,6 @@ public class LoginApi {
     @HttpPath(value = "/api/logout")
     public void logout() throws IOException {
         AuthHelper.logout();
-        ServletHelper.getResponse().sendRedirect("/login");
+        ServletHelper.getResponse().sendRedirect("/page/login");
     }
 }

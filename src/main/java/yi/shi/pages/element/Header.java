@@ -14,10 +14,11 @@ import static j2html.TagCreator.*;
 public class Header {
     public static ContainerTag createHeader() {
         Map<String, String> menuItems = new LinkedHashMap<>();
-        menuItems.put("Home", "/");
-        menuItems.put("Upload", "/page/uploadpage");
+        menuItems.put("My", "/");
+        menuItems.put("Logout", "/api/logout");
         menuItems.put("About", "/about");
-        menuItems.put("Contact", "/contact");
+        menuItems.put("UploadImage", "/page/uploadpage");
+        menuItems.put("Home", "/");
         return generateHeader(menuItems);
     }
 

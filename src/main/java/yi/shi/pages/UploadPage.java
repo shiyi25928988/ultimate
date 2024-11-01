@@ -17,7 +17,7 @@ public class UploadPage {
 
 
     @GET
-    @HttpPath(value = "/uploadpage")
+    @HttpPath(value = "/page/uploadpage")
     public HTML uploadPage() throws Exception {
         HTML html = new HTML();
         html.setHtmlContent(page().render());
