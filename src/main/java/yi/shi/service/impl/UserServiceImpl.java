@@ -40,4 +40,13 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    @Override
+    public String getRoleByUsername(String username) {
+        String role = userAccountMapper.getRoleByUsername(username);
+        if(Strings.isNullOrEmpty(role)){
+            return "user";
+        }
+        return role;
+    }
 }

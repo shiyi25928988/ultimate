@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.eclipse.jetty.servlet.ServletHandler;
 import yi.shi.data.ImageUrl;
 import yi.shi.plinth.annotation.Properties;
+import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -44,6 +45,7 @@ public class ImageApi {
 
     @GET
     @HttpPath(value = "/api/deleteImages")
+    @AUTH(authUrl = "/page/login", andRole = "admin")
     public void deleteImages() throws IOException {
         Path dirPath = Paths.get(UPLOAD_DIRECTORY);
 

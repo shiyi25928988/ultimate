@@ -12,4 +12,6 @@ public interface UserService {
     int addNewUser(UserAccount userAccount);
 
     boolean checkUser(String username, String password);
+
+    String getRoleByUsername(String username);
 }

@@ -9,6 +9,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.auth.AuthHelper;
+import yi.shi.plinth.http.HttpErrorRespHelper;
 import yi.shi.plinth.http.result.JSON;
 import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.service.UserService;
@@ -23,14 +24,15 @@ public class LoginApi {
 
     @POST
     @HttpPath(value = "/api/login")
-    public JSON<LoginResult> login(@HttpBody LoginUser loginUser) {
+    public JSON<LoginResult> login(@HttpBody LoginUser loginUser) throws IOException {
         if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
-            AuthHelper.login(loginUser, "user");
+            String role = userService.getRoleByUsername(loginUser.getUsername());
+            AuthHelper.login(loginUser, role.split(","));
             LoginResult result = new LoginResult("LOGIN SUCCESS!");
             return new JSON<>(result);
         }
-        LoginResult result = new LoginResult("LOGIN FAILED!");
-        return new JSON<>(result);
+        HttpErrorRespHelper.send401();
+        return null;
     }
 
     @GET

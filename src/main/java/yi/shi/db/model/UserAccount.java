@@ -23,7 +23,7 @@ public class UserAccount {
     private Date updateTime;
     private Date lastLoginTime;
     private String lastLoginIP;
-    private int role;
+    private String role;
     private boolean isLock;
     private boolean isDeleted;
     private boolean isOnline;

@@ -24,14 +24,9 @@ public class UserApi {
     @POST
     @HttpPath("/api/user/add")
     public JSON<Result<Integer>> addUser(@HttpBody UserAccount userAccount) {
+        userAccount.setRole("user");
         int res = userService.addNewUser(userAccount);
         return new JSON<>(Result.success(res));
     }
 
-    @GET
-    @HttpPath("/api/user/getPasswdByUsername")
-    public JSON<Result<String>> getPasswdByUsername(@HttpParam("username") String username) {
-        String passwd = userService.getPasswdByUsername(username);
-        return new JSON<>(Result.success(passwd));
-    }
 }

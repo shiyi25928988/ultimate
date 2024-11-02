@@ -32,6 +32,7 @@ public class UploadPage {
     private Tag page(){
         ContainerTag html = html(
                 Head.createHead("上传文件"),
+                Header.createHeader(),
                         style("body {\n" +
                                 "                        font-family: Arial, sans-serif;\n" +
                                 "                        background-color: #f4f4f4;\n" +
@@ -113,11 +114,11 @@ public class UploadPage {
                                 "                        input[type=\"file\"], input[type=\"submit\"] {\n" +
                                 "                            font-size: 14px;\n" +
                                 "                        }\n" +
-                                "                    }")
-                , Header.createHeader(),
+                                "                    }"),
+
                 body(
                         div(
-                                h1("上传文件"),
+                                h3("上传文件"),
                                 form(
                                         label("选择文件: "),
                                         input().withType("file").withName("file").withId("fileInput").withCondMultiple(true),
