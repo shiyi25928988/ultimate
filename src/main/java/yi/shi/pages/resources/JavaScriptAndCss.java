@@ -7,7 +7,7 @@ import yi.shi.plinth.http.MimeType;
 import yi.shi.plinth.http.result.BINARY;
 
 @HttpService
-public class JavaScript {
+public class JavaScriptAndCss {
 
     private static final String JQUERY_JS = "/META-INF/resources/webjars/jquery/3.7.1/dist/jquery.js";
     private static final String JQUERY_MIN_JS = "/META-INF/resources/webjars/jquery/3.7.1/dist/jquery.min.js";
@@ -24,28 +24,54 @@ public class JavaScript {
 
     @GET
     @HttpPath(value = "/js/jquery.min.js")
-    public BINARY jquery() throws Exception {
+    public BINARY jqueryMinJs() throws Exception {
         BINARY result = new BINARY();
-        result.setMimeType(MimeType.TEXT_CSS);
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
         result.setData(this.getClass().getResourceAsStream(JQUERY_MIN_JS));
         return result;
     }
 
     @GET
     @HttpPath(value = "/js/materialize.min.js")
-    public BINARY materialize() throws Exception {
+    public BINARY materializeMinJs() throws Exception {
         BINARY result = new BINARY();
-        result.setMimeType(MimeType.TEXT_CSS);
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
         result.setData(this.getClass().getResourceAsStream(MATERIALIZE_MIN_JS));
         return result;
     }
 
     @GET
     @HttpPath(value = "/js/toastify.js")
-    public BINARY toastify() throws Exception {
+    public BINARY toastifyJs() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream(TOASTIFY_JS));
+        return result;
+    }
+
+    @GET
+    @HttpPath(value = "/css/styles.css")
+    public BINARY stylesCss() throws Exception {
         BINARY result = new BINARY();
         result.setMimeType(MimeType.TEXT_CSS);
-        result.setData(this.getClass().getResourceAsStream(TOASTIFY_JS));
+        result.setData(this.getClass().getResourceAsStream("/static/css/styles.css"));
+        return result;
+    }
+    @GET
+    @HttpPath(value = "/css/materialize.min.css")
+    public BINARY materializeMinCss() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream(MATERIALIZE_MIN_CSS));
+        return result;
+    }
+
+    @GET
+    @HttpPath(value = "/css/toastify.css")
+    public BINARY toastifyMinCss() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream(TOASTIFY_CSS));
         return result;
     }
 }

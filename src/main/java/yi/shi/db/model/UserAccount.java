@@ -14,6 +14,7 @@ public class UserAccount {
     private int id;
     private String username;
     private String passwd;
+    private String nickName;
     private String email;
     private String phone;
     private String address;

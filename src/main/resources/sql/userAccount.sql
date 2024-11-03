@@ -2,6 +2,7 @@ CREATE TABLE `user_account` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`passwd` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`nick_name` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`email` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
 	`phone` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
 	`address` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
