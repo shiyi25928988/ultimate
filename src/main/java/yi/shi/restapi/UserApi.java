@@ -24,9 +24,14 @@ public class UserApi {
     @POST
     @HttpPath("/api/user/add")
     public JSON<Result<Integer>> addUser(@HttpBody UserAccount userAccount) {
+        if(userService.checkIfUserExist(userAccount.getUsername())){
+            return new JSON<>(Result.fail("用户名已存在"));
+        }
         userAccount.setRole("user");
         int res = userService.addNewUser(userAccount);
-        return new JSON<>(Result.success(res));
+        Result result =Result.success(res);
+        result.setMessage("用户注册成功");
+        return new JSON<>(result);
     }
 
 }

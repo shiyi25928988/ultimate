@@ -4,6 +4,7 @@ import j2html.tags.ContainerTag;
 import j2html.tags.Tag;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
+import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -17,6 +18,7 @@ public class UploadPage {
 
 
     @GET
+    @AUTH(authUrl = "/page/login", andRole = "admin")
     @HttpPath(value = "/page/uploadpage")
     public HTML uploadPage() throws Exception {
         HTML html = new HTML();
@@ -32,7 +34,7 @@ public class UploadPage {
     private Tag page(){
         ContainerTag html = html(
                 Head.createHead("上传文件"),
-                Header.createHeader(),
+                //Header.createHeader(),
                         style("body {\n" +
                                 "                        font-family: Arial, sans-serif;\n" +
                                 "                        background-color: #f4f4f4;\n" +

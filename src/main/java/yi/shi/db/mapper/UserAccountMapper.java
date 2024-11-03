@@ -16,4 +16,10 @@ public interface UserAccountMapper {
 
     @Select("SELECT role FROM UserAccount WHERE username = #{username}")
     String getRoleByUsername(String username);
+
+    @Select("SELECT * FROM UserAccount WHERE username = #{username}")
+    UserAccount getUserByUsername(String username);
+
+    @Select("SELECT COUNT(*) FROM UserAccount WHERE username = #{username}")
+    int getCountByUsername(String username);
 }

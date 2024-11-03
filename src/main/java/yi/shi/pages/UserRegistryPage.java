@@ -1,6 +1,7 @@
 package yi.shi.pages;
 
 import j2html.tags.ContainerTag;
+import yi.shi.pages.element.Ajax;
 import yi.shi.pages.element.Head;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -73,26 +74,26 @@ public class UserRegistryPage {
                         "                            return;\n" +
                         "                        }\n" +
                         "\n" +
-                        "                        // 发送 AJAX 请求\n" +
-                        "                        $.ajax({\n" +
-                        "                            url: '/api/user/add',\n" +
-                        "                            type: 'POST',\n" +
-                        "                            contentType: 'application/json',\n" +
-                        "                            data: JSON.stringify({\n" +
-                        "                                username: username,\n" +
-                        "                                email: email,\n" +
-                        "                                passwd: password\n" +
-                        "                            }),\n" +
-                        "                            success: function(response) {\n" +
-                        "                                alert('用户注册成功！');\n" +
-                        "                                console.log(response);\n" +
-                        "                                window.location.href = '/';" +
-                        "                            },\n" +
-                        "                            error: function(error) {\n" +
-                        "                                alert('用户注册失败：' + error.responseText);\n" +
-                        "                                console.error(error);\n" +
-                        "                            }\n" +
-                        "                        });\n" +
+                        "                        // 发送 AJAX 请求\n" + Ajax.getAjax("/api/user/add", "{username: username, email: email, passwd: password}") +
+//                        "                        $.ajax({\n" +
+//                        "                            url: '/api/user/add',\n" +
+//                        "                            type: 'POST',\n" +
+//                        "                            contentType: 'application/json',\n" +
+//                        "                            data: JSON.stringify({\n" +
+//                        "                                username: username,\n" +
+//                        "                                email: email,\n" +
+//                        "                                passwd: password\n" +
+//                        "                            }),\n" +
+//                        "                            success: function(response) {\n" +
+//                        "                                alert('用户注册成功！');\n" +
+//                        "                                console.log(response);\n" +
+//                        "                                window.location.href = '/';" +
+//                        "                            },\n" +
+//                        "                            error: function(error) {\n" +
+//                        "                                alert('用户注册失败：' + error.responseText);\n" +
+//                        "                                console.error(error);\n" +
+//                        "                            }\n" +
+//                        "                        });\n" +
                         "                    });\n" +
                         "                });")
         ));

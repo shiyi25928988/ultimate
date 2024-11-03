@@ -1,6 +1,8 @@
 package yi.shi.restapi;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
+import lombok.extern.log4j.Log4j;
 import yi.shi.data.LoginResult;
 import yi.shi.data.LoginUser;
 import yi.shi.plinth.annotation.http.HttpBody;
@@ -17,6 +19,7 @@ import yi.shi.service.UserService;
 import java.io.IOException;
 
 @HttpService
+@Log4j
 public class LoginApi {
 
     @Inject
@@ -27,7 +30,7 @@ public class LoginApi {
     public JSON<LoginResult> login(@HttpBody LoginUser loginUser) throws IOException {
         if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
             String role = userService.getRoleByUsername(loginUser.getUsername());
-            AuthHelper.login(loginUser, role.split(","));
+            AuthHelper.login(loginUser.getUsername(), role.split(","));
             LoginResult result = new LoginResult("LOGIN SUCCESS!");
             return new JSON<>(result);
         }

@@ -49,4 +49,12 @@ public class UserServiceImpl implements UserService {
         }
         return role;
     }
+
+    @Override
+    public boolean checkIfUserExist(String username) {
+        if(userAccountMapper.getCountByUsername(username) > 0){
+            return true;
+        }
+        return false;
+    }
 }
