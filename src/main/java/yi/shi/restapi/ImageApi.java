@@ -76,14 +76,4 @@ public class ImageApi {
 
 
 
-    public static void main(String[] args) throws JsonProcessingException {
-        List<ImageUrl> list = new ArrayList<>();
-        list.add(new ImageUrl("/static/1111111.png"));
-        list.add(new ImageUrl("/static/1111111.png"));
-        list.add(new ImageUrl("/static/1111111.png"));
-        list.add(new ImageUrl("/static/1111111.png"));
-        list.add(new ImageUrl("/static/1111111.png"));
-        String str = JsonUtils.toJson(list);
-        System.out.println(str);
-    }
 }

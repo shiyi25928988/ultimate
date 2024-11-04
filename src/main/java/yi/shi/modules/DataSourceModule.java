@@ -1,10 +1,17 @@
 package yi.shi.modules;
 
 import com.google.inject.name.Names;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
+import org.reflections.util.ConfigurationBuilder;
+import yi.shi.db.mapper.MarkdownFilesMapper;
 import yi.shi.db.mapper.UserAccountMapper;
+
+import java.util.Set;
 
 public class DataSourceModule extends MyBatisModule {
     @Override
@@ -12,7 +19,14 @@ public class DataSourceModule extends MyBatisModule {
         Names.bindProperties(binder(), System.getProperties());
         bindDataSourceProviderType(PooledDataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
+        getMapperClasses().forEach(mapperClass -> addMapperClass(mapperClass));
+    }
 
-        addMapperClass(UserAccountMapper.class);//前面的照抄，这里加自己的mapper
+    private Set<Class<?>> getMapperClasses() {
+        String packageName = "yi.shi.db.mapper";
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
+                .forPackages(packageName)
+                .addScanners(Scanners.TypesAnnotated));
+        return reflections.getTypesAnnotatedWith(Mapper.class);
     }
 }

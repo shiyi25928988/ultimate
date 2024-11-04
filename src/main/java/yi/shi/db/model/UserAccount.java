@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserAccount {
 
-    private int id;
+    private Long id;
     private String username;
     private String passwd;
     private String nickName;

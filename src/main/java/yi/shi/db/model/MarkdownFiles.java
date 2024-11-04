@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class MarkdownFiles {
     private Long id;
-    private Integer userId;
+    private Long userId;
     private String title;
     private String content;
     private Date createTime;
