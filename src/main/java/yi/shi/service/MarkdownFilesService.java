@@ -17,5 +17,10 @@ public interface MarkdownFilesService {
 
     String renderMarkdown(String markdown);
 
+    MarkdownFiles selectBySharedToken(String sharedToken);
+
+
+    int update(MarkdownFiles markdownFiles);
+
 
 }

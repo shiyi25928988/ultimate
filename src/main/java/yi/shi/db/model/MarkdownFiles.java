@@ -16,4 +16,5 @@ public class MarkdownFiles {
     private String content;
     private Date createTime;
     private Date updateTime;
+    private String sharedToken;
 }

@@ -74,4 +74,13 @@ public class JavaScriptAndCss {
         result.setData(this.getClass().getResourceAsStream(TOASTIFY_CSS));
         return result;
     }
+
+    @GET
+    @HttpPath(value = "/css/typora.css")
+    public BINARY typoraCss() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream("/static/css/typora.css"));
+        return result;
+    }
 }

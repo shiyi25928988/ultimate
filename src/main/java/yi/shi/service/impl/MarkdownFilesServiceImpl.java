@@ -38,12 +38,18 @@ public class MarkdownFilesServiceImpl implements MarkdownFilesService {
 
     @Override
     public String renderMarkdown(String markdown) {
-//        MutableDataHolder options = new MutableDataSet();
-//        options.setFrom(ParserEmulationProfile.GITHUB);
-//        Parser parser = Parser.builder(options).build();
-//        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-//        Node document = parser.parse(markdown);
-//        return renderer.render(document);
         return MarkdownUtil.markdownToHtmlExtensitons(markdown);
     }
+
+    @Override
+    public MarkdownFiles selectBySharedToken(String sharedToken) {
+        return markdownFilesMapper.selectBySharedToken(sharedToken);
+    }
+
+    @Override
+    public int update(MarkdownFiles markdownFiles) {
+        return markdownFilesMapper.update(markdownFiles);
+    }
+
+
 }

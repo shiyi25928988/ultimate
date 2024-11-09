@@ -4,6 +4,7 @@ import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TableBlock;
 import org.commonmark.ext.gfm.tables.TablesExtension;
 import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
+import org.commonmark.node.Code;
 import org.commonmark.node.Link;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
@@ -44,12 +45,24 @@ public class MarkdownUtil {
         @Override
         public void setAttributes(Node node, String s, Map<String, String> attributes) {
             //改变a标签的target
-            if (node instanceof Link){//instanceof是一个双目运算符，Link为类或接口，若node为Link子类或实现类将返回true
-//                attributes.put("target","_blank");
-            }
-            if (node instanceof TableBlock){
-                attributes.put("class","ui celled table");
+//            if (node instanceof Link){
+//                //attributes.put("class","_blank");
+//            }
+//            if (node instanceof TableBlock){
+//                attributes.put("class","ui celled table");
+//            }
+            if (node instanceof Code){
+                attributes.put("class","code");
             }
         }
+    }
+
+    public static String sharedTokenGenerate(){
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 16; i++) {
+            sb.append(random.nextInt(10));
+        }
+        return sb.toString();
     }
 }
