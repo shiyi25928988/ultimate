@@ -43,3 +43,42 @@
        border-radius: 8px;
        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    }
+
+   .sidebar {
+               height: 100%;
+               width: 0;
+               position: fixed;
+               z-index: 1;
+               top: 0;
+               left: 0;
+               background-color: #111;
+               overflow-x: hidden;
+               transition: 0.5s;
+               padding-top: 60px;
+           }
+
+           .sidebar .button-list {
+               list-style-type: none;
+               padding: 0;
+           }
+
+           .sidebar .button-item {
+               padding: 8px 8px 8px 32px;
+               text-decoration: none;
+               font-size: 25px;
+               color: #818181;
+               display: block;
+               transition: 0.3s;
+           }
+
+           .sidebar .button-item:hover {
+               color: #f1f1f1;
+           }
+
+           .toggle-button {
+               position: absolute;
+               top: 20px;
+               left: 20px;
+               font-size: 30px;
+               cursor: pointer;
+           }

@@ -16,7 +16,8 @@ public class Head {
                 link().withRel("stylesheet").withHref("/css/styles.css"), // 引入自定义样式
                 script().withSrc("/js/jquery.min.js"),
                 script().withSrc("/js/materialize.min.js"),
-                script().withSrc("/js/toastify.js")
+                script().withSrc("/js/toastify.js"),
+                script().withSrc("/js/sidebar.js")
         );
     }
 }

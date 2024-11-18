@@ -50,6 +50,15 @@ public class JavaScriptAndCss {
     }
 
     @GET
+    @HttpPath(value = "/js/sidebar.js")
+    public BINARY sidebarjs() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/static/js/sidebar.js"));
+        return result;
+    }
+
+    @GET
     @HttpPath(value = "/css/styles.css")
     public BINARY stylesCss() throws Exception {
         BINARY result = new BINARY();

@@ -17,7 +17,8 @@ public class Header {
         menuItems.put("My", "/");
         menuItems.put("Logout", "/api/logout");
         menuItems.put("About", "/about");
-        menuItems.put("UploadImage", "/page/uploadpage");
+        menuItems.put("上传图片", "/page/uploadpage");
+        //menuItems.put("图片墙", "/page/imagewallpage");
         menuItems.put("Home", "/");
         return generateHeader(menuItems);
     }

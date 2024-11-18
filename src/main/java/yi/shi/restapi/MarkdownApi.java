@@ -1,5 +1,6 @@
 package yi.shi.restapi;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import yi.shi.data.CommonParam;

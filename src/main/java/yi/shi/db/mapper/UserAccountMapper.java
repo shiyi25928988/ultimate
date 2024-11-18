@@ -9,7 +9,7 @@ import yi.shi.db.model.UserAccount;
 @Mapper
 public interface UserAccountMapper {
 
-    @Insert("INSERT INTO user_account(username, passwd, nick_name, email, phone, address, avatar, token, create_time, update_time, last_login_time, last_login_ip, role, is_lock, is_deleted, is_online) VALUES(#{username}, #{passwd}, #{nickName}, #{email}, #{phone}, #{address}, #{avatar}, #{token}, #{createTime}, #{updateTime}, #{lastLoginTime}, #{lastLoginIP}, #{role}, #{isLock}, #{isDeleted}, #{isOnline})")
+    @Insert("INSERT INTO user_account(username, passwd, nick_name, email, phone, address, avatar, token, create_time, update_time, last_login_time, last_login_ip, role, is_lock, is_deleted, is_online) VALUES(#{username}, #{passwd}, #{nickName, jdbcType=VARCHAR}, #{email, jdbcType=VARCHAR}, #{phone, jdbcType=VARCHAR}, #{address, jdbcType=VARCHAR}, #{avatar, jdbcType=VARCHAR}, #{token, jdbcType=VARCHAR}, #{createTime, jdbcType=TIMESTAMP}, #{updateTime, jdbcType=TIMESTAMP}, #{lastLoginTime, jdbcType=TIMESTAMP}, #{lastLoginIP, jdbcType=VARCHAR}, #{role, jdbcType=VARCHAR}, #{isLock, jdbcType=SMALLINT}, #{isDeleted, jdbcType=SMALLINT}, #{isOnline, jdbcType=SMALLINT})")
     int insert(UserAccount userAccount);
 
     @Select("SELECT passwd FROM user_account WHERE username = #{username}")
