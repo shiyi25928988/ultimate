@@ -16,4 +16,6 @@ public interface UserService {
     String getRoleByUsername(String username);
 
     boolean checkIfUserExist(String username);
+
+    Long getUserIdByUsername(String username);
 }

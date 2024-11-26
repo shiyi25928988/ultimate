@@ -11,6 +11,8 @@ public interface MarkdownFilesService {
 
     MarkdownFiles addNewMarkdown(MarkdownFiles markdownFiles);
 
+    MarkdownFiles updateMarkdown(MarkdownFiles markdownFiles);
+
     List<MarkdownFiles> selectByUserId(Long userId);
 
     MarkdownFiles selectById(Long id);

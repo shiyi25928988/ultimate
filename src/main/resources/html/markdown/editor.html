@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown Editor</title>
+    <link href="/css/markdown/simplemde.min.css" rel="stylesheet">
+    <link href="/css/markdown/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/markdown/github-gist.min.css" rel="stylesheet">
+</head>
+<body>
+<textarea id="markdownEditor"></textarea>
+<script src="/js/markdown/simplemde.min.js"></script>
+<script src="/js/markdown/highlight.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({
+        element: document.querySelector('textarea'),
+        autoDownloadFontAwesome:false,//true从默认地址引入fontawesome依赖 false需自行引入(国内用bootcdn更快点)
+        autofocus:true,
+        autosave: {
+            enabled: true,
+            uniqueId: "SimpleMDE",
+            delay: 1000,
+        },
+        blockStyles: {
+            bold: "**",
+            italic: "*",
+            code: "```"
+        },
+        forceSync: true,
+        hideIcons: false,
+        indentWithTabs: true,
+        lineWrapping: true,
+        renderingConfig:{
+            singleLineBreaks: false,
+            codeSyntaxHighlighting: true // 需要highlight依赖
+        },
+        showIcons: true,
+        spellChecker: true,
+        toolbar:[
+            "bold", "italic", "strikethrough", "heading",
+            "|", "quote" , "code" , "unordered-list", "ordered-list","clean-block",
+            "|", "link", "image", "table", "horizontal-rule",
+            "|", "preview", "side-by-side", "fullscreen", "guide",
+            "|"
+            ,
+            {
+                name: "save",
+                title: "save",
+                className: "fa fa-save",
+                action: function (){
+                     // 获取 textarea 的内容
+                    var markdownContent = document.getElementById('markdownEditor').value;
+
+                    // 发送 POST 请求到后端接口
+                    fetch('/api/saveMarkdownContent', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content: markdownContent })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('保存成功！');
+                        } else {
+                            alert('保存失败：' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('请求出错：', error);
+                        alert('请求出错，请检查网络连接或稍后再试。');
+                    });
+
+                },
+            }
+        ]
+    });
+    // 默认开启预览模式
+    simplemde.toggleSideBySide();
+</script>
+</body>
+</html>

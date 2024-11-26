@@ -30,7 +30,8 @@ public class LoginApi {
     public JSON<LoginResult> login(@HttpBody LoginUser loginUser) throws IOException {
         if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
             String role = userService.getRoleByUsername(loginUser.getUsername());
-            AuthHelper.login(loginUser.getUsername(), role.split(","));
+            Long userId = userService.getUserIdByUsername(loginUser.getUsername());
+            AuthHelper.login(userId, role.split(","));
             LoginResult result = new LoginResult("LOGIN SUCCESS!");
             return new JSON<>(result);
         }

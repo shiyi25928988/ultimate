@@ -27,6 +27,12 @@ public class MarkdownFilesServiceImpl implements MarkdownFilesService {
     }
 
     @Override
+    public MarkdownFiles updateMarkdown(MarkdownFiles markdownFiles) {
+        markdownFilesMapper.update(markdownFiles);
+        return markdownFiles;
+    }
+
+    @Override
     public List<MarkdownFiles> selectByUserId(Long userId) {
         return markdownFilesMapper.selectByUserId(userId);
     }

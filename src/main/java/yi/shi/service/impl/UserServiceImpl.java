@@ -8,6 +8,7 @@ import yi.shi.service.UserService;
 import yi.shi.utils.PasswordEncryptor;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class UserServiceImpl implements UserService {
 
@@ -56,5 +57,14 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Long getUserIdByUsername(String username) {
+        UserAccount userAccount =userAccountMapper.getUserByUsername(username);
+        if(Objects.nonNull(userAccount)){
+            return userAccount.getId();
+        }
+        return null;
     }
 }

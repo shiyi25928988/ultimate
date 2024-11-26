@@ -16,6 +16,7 @@ import yi.shi.plinth.http.result.JSON;
 import yi.shi.service.MarkdownFilesService;
 import yi.shi.utils.MarkdownUtil;
 
+import java.util.Date;
 import java.util.Objects;
 
 @HttpService
@@ -27,7 +28,19 @@ public class MarkdownApi {
     @POST
     @HttpPath("/api/markdown/add")
     public JSON<MarkdownFiles> addNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
+        String userId = String.valueOf(StpUtil.getLoginId());
+        markdownFiles.setUserId(Long.parseLong(userId));
+        markdownFiles.setCreateTime(new Date());
         return new JSON<>(markdownFilesService.addNewMarkdown(markdownFiles));
+    }
+
+    @POST
+    @HttpPath("/api/markdown/update")
+    public JSON<MarkdownFiles> updateNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
+        String userId = String.valueOf(StpUtil.getLoginId());
+        markdownFiles.setUserId(Long.parseLong(userId));
+        markdownFiles.setUpdateTime(new Date());
+        return new JSON<>(markdownFilesService.updateMarkdown(markdownFiles));
     }
 
     @GET
