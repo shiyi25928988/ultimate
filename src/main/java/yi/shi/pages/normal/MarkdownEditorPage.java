@@ -1,10 +1,6 @@
-package yi.shi.pages;
+package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
-import j2html.tags.DomContent;
-import j2html.tags.Tag;
-import j2html.tags.specialized.FormTag;
-import j2html.tags.specialized.ScriptTag;
 import org.apache.commons.io.IOUtils;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;

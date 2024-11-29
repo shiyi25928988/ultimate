@@ -1,4 +1,4 @@
-package yi.shi.pages;
+package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
 import yi.shi.pages.element.Footer;

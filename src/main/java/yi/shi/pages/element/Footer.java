@@ -21,7 +21,7 @@ public class Footer {
                 ),
                 div().withClass("footer-copyright").with(
                         div().withClass("container").withText(
-                                "© 2023 公司名称"
+                                "© 2023 Ultimate Web. All rights reserved."
                         )
                 )
         );

@@ -1,10 +1,9 @@
-package yi.shi.pages;
+package yi.shi.pages.normal;
 
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
 import yi.shi.db.model.MarkdownFiles;
-import yi.shi.pages.element.Head;
-import yi.shi.plinth.annotation.auth.AUTH;
+import yi.shi.pages.Page;
 import yi.shi.plinth.annotation.http.HttpParam;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -17,7 +16,7 @@ import java.util.Objects;
 import static j2html.TagCreator.*;
 
 @HttpService
-public class ShowMarkdownPage extends Page{
+public class ShowMarkdownPage extends Page {
 
     @Inject
     private MarkdownFilesService markdownFilesService;
@@ -53,7 +52,7 @@ public class ShowMarkdownPage extends Page{
 
 
     @Override
-    HeadTag createHead() {
+    protected HeadTag createHead() {
         return head(
                     meta().withCharset("UTF-8"),
                     meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
@@ -63,12 +62,12 @@ public class ShowMarkdownPage extends Page{
     }
 
     @Override
-    HeaderTag createHeader() {
+    protected HeaderTag createHeader() {
         return null;
     }
 
     @Override
-    BodyTag createBody() {
+    protected BodyTag createBody() {
         return body(
                         div().withClass("container").with(
                                 h1(markdownFiles.getTitle()),
@@ -79,7 +78,7 @@ public class ShowMarkdownPage extends Page{
     }
 
     @Override
-    FooterTag createFooter() {
+    protected FooterTag createFooter() {
         return null;
     }
 }

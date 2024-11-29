@@ -1,9 +1,8 @@
-package yi.shi.pages;
+package yi.shi.pages.normal;
 
 import j2html.tags.Tag;
 import j2html.tags.specialized.HtmlTag;
 import j2html.tags.specialized.ScriptTag;
-import yi.shi.data.ImageUrl;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
@@ -12,9 +11,6 @@ import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static j2html.TagCreator.*;
 

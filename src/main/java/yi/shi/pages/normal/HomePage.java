@@ -1,22 +1,16 @@
-package yi.shi.pages;
+package yi.shi.pages.normal;
 
-import j2html.tags.Tag;
 import j2html.tags.specialized.*;
-import yi.shi.pages.element.Head;
-import yi.shi.pages.element.Header;
-import yi.shi.pages.element.SideBar;
+import yi.shi.pages.Page;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static j2html.TagCreator.*;
 
 @HttpService
-public class HomePage extends Page{
+public class HomePage extends Page {
     @GET
     @HttpPath(value = "/home")
     public HTML homePage() {
@@ -26,23 +20,23 @@ public class HomePage extends Page{
     }
 
     @Override
-    HeadTag createHead() {
+    protected HeadTag createHead() {
         LinkTag foundationLink = link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css");
         return head(foundationLink);
     }
 
     @Override
-    HeaderTag createHeader() {
+    protected HeaderTag createHeader() {
         return header().withClass("top-bar").withText("My Header");
     }
 
     @Override
-    BodyTag createBody() {
+    protected BodyTag createBody() {
         return body().withClass("row").withText("My Body Content");
     }
 
     @Override
-    FooterTag createFooter() {
+    protected FooterTag createFooter() {
         return footer().withClass("footer").withText("My Footer");
     }
 }
