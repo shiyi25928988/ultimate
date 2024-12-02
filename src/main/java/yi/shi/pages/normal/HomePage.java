@@ -2,6 +2,9 @@ package yi.shi.pages.normal;
 
 import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
+import yi.shi.pages.responsive.ResponsiveCard;
+import yi.shi.pages.responsive.ResponsiveContainer;
+import yi.shi.pages.responsive.ResponsiveNav;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -9,8 +12,19 @@ import yi.shi.plinth.http.result.HTML;
 
 import static j2html.TagCreator.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @HttpService
 public class HomePage extends Page {
+
+    private static final Map<String, String> MENU = new HashMap<>();
+    static {
+        MENU.put("Home", "/home");
+        MENU.put("About", "/about");
+        MENU.put("Contact", "/contact");
+    }   
+
     @GET
     @HttpPath(value = "/home")
     public HTML homePage() {
@@ -21,8 +35,16 @@ public class HomePage extends Page {
 
     @Override
     protected HeadTag createHead() {
-        LinkTag foundationLink = link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css");
-        return head(foundationLink);
+        return head(
+                meta().withCharset("UTF-8"),
+                meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
+                title("HOME"),
+                link().withRel("stylesheet").withHref("/css/materialize.min.css"),
+                link().withRel("stylesheet").withHref("/css/toastify.css"),
+                script().withSrc("/js/jquery.min.js"),
+                script().withSrc("/js/materialize.min.js"),
+                script().withSrc("/js/toastify.js")
+        );
     }
 
     @Override
@@ -32,7 +54,13 @@ public class HomePage extends Page {
 
     @Override
     protected BodyTag createBody() {
-        return body().withClass("row").withText("My Body Content");
+        return body(
+            ResponsiveNav.create("logo", "title", MENU),
+            ResponsiveContainer.create(
+                ResponsiveCard.create("标题", "内容")
+                ),
+                // 初始化移动端侧边栏的脚本
+                script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
     }
 
     @Override

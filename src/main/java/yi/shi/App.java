@@ -5,7 +5,6 @@ import yi.shi.modules.DataSourceModule;
 import yi.shi.plinth.annotation.PropertiesFile;
 import yi.shi.plinth.boot.ServiceBooter;
 
-import java.io.IOException;
 
 /**
  * Hello world!
