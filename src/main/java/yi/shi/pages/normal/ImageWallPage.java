@@ -18,8 +18,8 @@ import static j2html.TagCreator.*;
 public class ImageWallPage {
 
     @GET
-    @AUTH(authUrl = "/page/login")
-    @HttpPath(value = "/")
+    //@AUTH(authUrl = "/page/login")
+    @HttpPath(value = "/page/imageWall")
     public HTML imageWallPage() throws Exception {
         HTML html = new HTML();
         html.setHtmlContent(page().render());

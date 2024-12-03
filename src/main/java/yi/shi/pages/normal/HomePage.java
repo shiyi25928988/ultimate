@@ -2,6 +2,7 @@ package yi.shi.pages.normal;
 
 import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
+import yi.shi.pages.element.Menu;
 import yi.shi.pages.responsive.ResponsiveCard;
 import yi.shi.pages.responsive.ResponsiveContainer;
 import yi.shi.pages.responsive.ResponsiveNav;
@@ -17,13 +18,6 @@ import java.util.Map;
 
 @HttpService
 public class HomePage extends Page {
-
-    private static final Map<String, String> MENU = new HashMap<>();
-    static {
-        MENU.put("Home", "/home");
-        MENU.put("About", "/about");
-        MENU.put("Contact", "/contact");
-    }   
 
     @GET
     @HttpPath(value = "/home")
@@ -55,9 +49,10 @@ public class HomePage extends Page {
     @Override
     protected BodyTag createBody() {
         return body(
-            ResponsiveNav.create("logo", "title", MENU),
+            ResponsiveNav.create("logo", "title", Menu.getMenu()),
             ResponsiveContainer.create(
-                ResponsiveCard.create("标题", "内容")
+                    ResponsiveCard.create("title", "content"),
+                    ResponsiveCard.create("title", "content")
                 ),
                 // 初始化移动端侧边栏的脚本
                 script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));

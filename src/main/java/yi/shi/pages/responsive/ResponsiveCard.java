@@ -12,14 +12,15 @@ public class ResponsiveCard {
                 div().withClass("card-content")
                     .with(
                         span().withClass("card-title").withText(title),
+                        img().withSrc("https://picsum.photos/200/300?random"),
                         p().withText(content)
-                    ),
-                // 在移动端隐藏某些操作按钮
-                div().withClass("card-action hide-on-small-only")
-                    .with(
-                        a().withHref("#").withText("操作1"),
-                        a().withHref("#").withText("操作2")
                     )
+                // 在移动端隐藏某些操作按钮
+//                div().withClass("card-action hide-on-small-only")
+//                    .with(
+//                        a().withHref("#").withText("操作1"),
+//                        a().withHref("#").withText("操作2")
+//                    )
             );
     }
 }
