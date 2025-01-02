@@ -13,13 +13,6 @@ public class MarkdownResources {
     public static final String FONT_AWESOME_CSS = "/css/markdown/font-awesome.min.css";
 
     public static final String GITHUB_GIST_CSS = "/css/markdown/github-gist.min.css";
-
-    public static final String SIMPLEMDE_CSS = "/css/markdown/simplemde.min.css";
-
-    public static final String SIMPLEMDE_JS = "/js/markdown/simplemde.min.js";
-
-    public static final String HIGHLIGHT_JS = "/js/markdown/highlight.min.js";
-
     public static final String FONTAWESOME_WEBFONT_TTF = "/css/fonts/fontawesome-webfont.ttf";
     public static final String FONTAWESOME_WEBFONT_WOFF = "/css/fonts/fontawesome-webfont.woff";
     public static final String FONTAWESOME_WEBFONT_WOFF2 = "/css/fonts/fontawesome-webfont.woff2";
@@ -67,30 +60,5 @@ public class MarkdownResources {
         return result;
     }
 
-    @GET
-    @HttpPath(value = SIMPLEMDE_CSS)
-    public BINARY simplemdeCss() throws Exception {
-        BINARY result = new BINARY();
-        result.setMimeType(MimeType.TEXT_CSS);
-        result.setData(this.getClass().getResourceAsStream(SIMPLEMDE_CSS));
-        return result;
-    }
 
-    @GET
-    @HttpPath(value = SIMPLEMDE_JS)
-    public BINARY simplemdeJs() throws Exception {
-        BINARY result = new BINARY();
-        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
-        result.setData(this.getClass().getResourceAsStream(SIMPLEMDE_JS));
-        return result;
-    }
-
-    @GET
-    @HttpPath(value = HIGHLIGHT_JS)
-    public BINARY highlightJs() throws Exception {
-        BINARY result = new BINARY();
-        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
-        result.setData(this.getClass().getResourceAsStream(HIGHLIGHT_JS));
-        return result;
-    }
 }

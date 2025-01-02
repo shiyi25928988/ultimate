@@ -4,6 +4,8 @@ import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Menu;
+import yi.shi.pages.resources.JqueryResources;
+import yi.shi.pages.resources.MaterializeResources;
 import yi.shi.pages.responsive.ResponsiveCard;
 import yi.shi.pages.responsive.ResponsiveContainer;
 import yi.shi.pages.responsive.ResponsiveNav;
@@ -34,10 +36,10 @@ public class HomePage extends Page {
                 meta().withCharset("UTF-8"),
                 meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
                 title("HOME"),
-                link().withRel("stylesheet").withHref("/css/materialize.min.css"),
+                link().withRel("stylesheet").withHref(MaterializeResources.MATERIALIZE_MIN_CSS),
                 link().withRel("stylesheet").withHref("/css/toastify.css"),
-                script().withSrc("/js/jquery.min.js"),
-                script().withSrc("/js/materialize.min.js"),
+                script().withSrc(JqueryResources.JQUERY_MIN_JS),
+                script().withSrc(MaterializeResources.MATERIALIZE_MIN_JS),
                 script().withSrc("/js/toastify.js")
         );
     }

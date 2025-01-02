@@ -2,6 +2,8 @@ package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
 import org.apache.commons.io.IOUtils;
+import yi.shi.pages.resources.JqueryResources;
+import yi.shi.pages.resources.MaterializeResources;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -29,11 +31,11 @@ public class MarkdownEditorPage {
                 meta().withCharset("UTF-8"),
                 meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
                 title("Markdown Editor"),
-                link().withRel("stylesheet").withHref("/css/materialize.min.css"),
+                link().withRel("stylesheet").withHref(MaterializeResources.MATERIALIZE_MIN_CSS),
                 link().withRel("stylesheet").withHref("/css/toastify.css"),
                 link().withRel("stylesheet").withHref("/css/styles.css"), // 引入自定义样式
-                script().withSrc("/js/jquery.min.js"),
-                script().withSrc("/js/materialize.min.js"),
+                script().withSrc(JqueryResources.JQUERY_MIN_JS),
+                script().withSrc(MaterializeResources.MATERIALIZE_MIN_JS),
                 script().withSrc("/js/toastify.js"),
                 script().withSrc("/js/sidebar.js")
         );
