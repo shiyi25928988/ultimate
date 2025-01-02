@@ -1,11 +1,11 @@
 package yi.shi.pages.element;
 
-import j2html.tags.ContainerTag;
+import j2html.tags.specialized.FooterTag;
 
 import static j2html.TagCreator.*;
 
 public class Footer {
-    public static ContainerTag createFooter() {
+    public static FooterTag createFooter() {
         return footer().withClass("page-footer").with(
                 div().withClass("container").with(
                         div().withClass("row").with(

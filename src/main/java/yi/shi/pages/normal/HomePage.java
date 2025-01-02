@@ -2,6 +2,7 @@ package yi.shi.pages.normal;
 
 import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
+import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Menu;
 import yi.shi.pages.responsive.ResponsiveCard;
 import yi.shi.pages.responsive.ResponsiveContainer;
@@ -43,7 +44,7 @@ public class HomePage extends Page {
 
     @Override
     protected HeaderTag createHeader() {
-        return header().withClass("top-bar").withText("My Header");
+        return header().withClass("top-bar");
     }
 
     @Override
@@ -60,6 +61,6 @@ public class HomePage extends Page {
 
     @Override
     protected FooterTag createFooter() {
-        return footer().withClass("footer").withText("My Footer");
+        return Footer.createFooter();
     }
 }
