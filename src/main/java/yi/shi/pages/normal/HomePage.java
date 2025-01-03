@@ -3,12 +3,10 @@ package yi.shi.pages.normal;
 import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.Footer;
-import yi.shi.pages.element.Menu;
-import yi.shi.pages.resources.JqueryResources;
-import yi.shi.pages.resources.MaterializeResources;
+import yi.shi.pages.element.Head;
+import yi.shi.pages.element.Header;
 import yi.shi.pages.responsive.ResponsiveCard;
 import yi.shi.pages.responsive.ResponsiveContainer;
-import yi.shi.pages.responsive.ResponsiveNav;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -16,14 +14,11 @@ import yi.shi.plinth.http.result.HTML;
 
 import static j2html.TagCreator.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @HttpService
 public class HomePage extends Page {
 
     @GET
-    @HttpPath(value = "/home")
+    @HttpPath(value = "/")
     public HTML homePage() {
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
@@ -32,27 +27,18 @@ public class HomePage extends Page {
 
     @Override
     protected HeadTag createHead() {
-        return head(
-                meta().withCharset("UTF-8"),
-                meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
-                title("HOME"),
-                link().withRel("stylesheet").withHref(MaterializeResources.MATERIALIZE_MIN_CSS),
-                link().withRel("stylesheet").withHref("/css/toastify.css"),
-                script().withSrc(JqueryResources.JQUERY_MIN_JS),
-                script().withSrc(MaterializeResources.MATERIALIZE_MIN_JS),
-                script().withSrc("/js/toastify.js")
-        );
+        return Head.createHead("Home");
     }
 
     @Override
     protected HeaderTag createHeader() {
-        return header().withClass("top-bar");
+        return Header.createHeader();
     }
 
     @Override
     protected BodyTag createBody() {
         return body(
-            ResponsiveNav.create("logo", "title", Menu.getMenu()),
+            //ResponsiveNav.create("logo", "title", Menu.getMenu()),
             ResponsiveContainer.create(
                     ResponsiveCard.create("title", "content"),
                     ResponsiveCard.create("title", "content")

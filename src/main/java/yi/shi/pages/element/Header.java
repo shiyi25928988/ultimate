@@ -3,6 +3,7 @@ package yi.shi.pages.element;
 import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
 import j2html.tags.Tag;
+import j2html.tags.specialized.HeaderTag;
 import j2html.tags.specialized.NavTag;
 
 import java.util.ArrayList;
@@ -13,36 +14,31 @@ import java.util.Map;
 import static j2html.TagCreator.*;
 
 public class Header {
-    public static ContainerTag createHeader() {
-        Map<String, String> menuItems = new LinkedHashMap<>();
-        menuItems.put("My", "/");
-        menuItems.put("Logout", "/api/logout");
-        menuItems.put("About", "/about");
-        menuItems.put("上传图片", "/page/uploadpage");
-        menuItems.put("Home", "/");
-        return generateHeader(menuItems);
+    public static HeaderTag createHeader() {
+        return generateHeader(Menu.getMenu());
     }
 
-    public static NavTag generateHeader(Map<String, String> menuItems) {
-        return nav(
+    private static HeaderTag generateHeader(Map<String, String> menuItems) {
+        return header(nav(
                 div().withClass("nav-wrapper").with(
-                                // Logo
-                                a("Logo").withClass("brand-logo").withHref("/"),
+                        // Logo
+                        a("Logo").withClass("brand-logo").withHref("/"),
 
-                                // 汉堡菜单按钮
-                                a().withClass("sidenav-trigger").withHref("#")
-                                        .withData("target", "mobile-menu")
-                                        .with(i().withClass("material-icons").withText("menu")),
+                        // 汉堡菜单按钮
+                        a().withClass("sidenav-trigger").withHref("#")
+                                .withData("target", "mobile-menu")
+                                .with(i().withClass("material-icons").withText("menu")),
 
-                                // 桌面端菜单
-                                ul().withClass("right hide-on-med-and-down")
-                                        .with(getMenuItems(menuItems)),
+                        // 桌面端菜单
+                        ul().withClass("right hide-on-med-and-down")
+                                .with(getMenuItems(menuItems)),
 
-                                // 移动端侧边菜单
-                                ul().withClass("sidenav").withId("mobile-menu")
-                                        .with(getMobileMenuItems(menuItems))
-                        )
-        ).withClass("navbar blue lighten-2");
+                        // 移动端侧边菜单
+                        ul().withClass("sidenav").withId("mobile-menu")
+                                .with(getMobileMenuItems(menuItems))
+                )
+        ).withClass("navbar dark lighten-2")).withClass("top-bar");
+
     }
 
     private static DomContent[] getMenuItems(Map<String, String> menuItems) {

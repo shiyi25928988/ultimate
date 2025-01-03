@@ -8,7 +8,7 @@ import j2html.tags.specialized.DivTag;
 public class ResponsiveContainer {
 
     public static DivTag create(DomContent...content) {
-        return div().withClass("container")
+        return div().withClass("container section")
                 .with(
                     div().withClass("row")
                         .with(

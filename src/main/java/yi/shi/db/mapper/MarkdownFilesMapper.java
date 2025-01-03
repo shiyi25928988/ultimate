@@ -10,6 +10,10 @@ import java.util.List;
 
 @Mapper
 public interface MarkdownFilesMapper {
+
+    @Select("SELECT MAX(id) FROM markdown_files")
+    long selectMaxId();
+
     @Insert("INSERT INTO markdown_files(user_id, title, content, create_time, update_time) VALUES(#{userId}, #{title}, #{content}, #{createTime}, #{updateTime})")
     int insert(MarkdownFiles markdownFiles);
 

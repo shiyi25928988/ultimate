@@ -13,6 +13,7 @@ import yi.shi.service.MarkdownFilesService;
 import yi.shi.utils.MarkdownUtil;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MarkdownFilesServiceImpl implements MarkdownFilesService {
 
@@ -22,7 +23,13 @@ public class MarkdownFilesServiceImpl implements MarkdownFilesService {
 
     @Override
     public MarkdownFiles addNewMarkdown(MarkdownFiles markdownFiles) {
-        markdownFilesMapper.insert(markdownFiles);
+        if(Objects.isNull(markdownFiles.getId())) {
+            long id = markdownFilesMapper.selectMaxId() + 1;
+            markdownFiles.setId(id);
+            markdownFilesMapper.insert(markdownFiles);
+        }else{
+            markdownFilesMapper.update(markdownFiles);
+        }
         return markdownFiles;
     }
 

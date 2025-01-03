@@ -13,9 +13,13 @@ import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.plinth.http.result.JSON;
+import yi.shi.result.Result;
 import yi.shi.service.MarkdownFilesService;
 import yi.shi.utils.MarkdownUtil;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Date;
 import java.util.Objects;
 
@@ -27,11 +31,24 @@ public class MarkdownApi {
 
     @POST
     @HttpPath("/api/markdown/add")
-    public JSON<MarkdownFiles> addNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
+    public JSON<Result<MarkdownFiles>> addNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
         String userId = String.valueOf(StpUtil.getLoginId());
         markdownFiles.setUserId(Long.parseLong(userId));
         markdownFiles.setCreateTime(new Date());
-        return new JSON<>(markdownFilesService.addNewMarkdown(markdownFiles));
+        if(Strings.isNullOrEmpty(markdownFiles.getTitle())){
+            markdownFiles.setTitle(getFirstLine(markdownFiles.getContent()));
+        }
+        return new JSON<>(Result.success(markdownFilesService.addNewMarkdown(markdownFiles)));
+    }
+
+    private String getFirstLine(String markdown) {
+        try (BufferedReader reader = new BufferedReader(new StringReader(markdown))) {
+            String firstLine = reader.readLine();
+            return firstLine;  // 输出: 这是第一行
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @POST

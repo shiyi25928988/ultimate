@@ -6,12 +6,15 @@
     <link href="/META-INF/resources/webjars/simplemde/1.11.2/dist/simplemde.min.css" rel="stylesheet">
     <link href="/css/markdown/font-awesome.min.css" rel="stylesheet">
     <link href="/css/markdown/github-gist.min.css" rel="stylesheet">
+    <link href="/META-INF/resources/webjars/toastify-js/src/toastify.css" rel="stylesheet">
 </head>
 <body>
 <textarea id="markdownEditor"></textarea>
 <script src="/META-INF/resources/webjars/simplemde/1.11.2/dist/simplemde.min.js"></script>
 <script src="/META-INF/resources/webjars/highlightjs/11.10.0/highlight.min.js"></script>
+<script src="/META-INF/resources/webjars/toastify-js/src/toastify.js"></script>
 <script>
+    var articleId;
     var simplemde = new SimpleMDE({
         element: document.querySelector('textarea'),
         autoDownloadFontAwesome:false,//true从默认地址引入fontawesome依赖 false需自行引入(国内用bootcdn更快点)
@@ -52,19 +55,36 @@
                     var markdownContent = document.getElementById('markdownEditor').value;
 
                     // 发送 POST 请求到后端接口
-                    fetch('/api/saveMarkdownContent', {
+                    fetch('/api/markdown/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ content: markdownContent })
+                        body: JSON.stringify({ id: articleId, content: markdownContent })
                     })
                     .then(response => response.json())
                     .then(data => {
-                        if (data.success) {
-                            alert('保存成功！');
+                        if (data.code === 1) {
+                            articleId = data.data.id;
+                            Toastify({
+                                text: data.message,
+                                duration: 3000,
+                                close: true,
+                                gravity: 'top',
+                                position: 'center',
+                                backgroundColor: '#4caf50',
+                                stopOnFocus: true
+                             }).showToast();
                         } else {
-                            alert('保存失败：' + data.message);
+                            Toastify({
+                                 text: data.message,
+                                 duration: 3000,
+                                 close: true,
+                                 gravity: 'top',
+                                 position: 'center',
+                                 backgroundColor: '#f44336',
+                                 stopOnFocus: true
+                             }).showToast();
                         }
                     })
                     .catch(error => {
@@ -72,6 +92,16 @@
                         alert('请求出错，请检查网络连接或稍后再试。');
                     });
 
+                },
+            },
+            "|"
+            ,
+            {
+                name: "Home",
+                title: "Home",
+                className: "fa fa-home",
+                action: function (){
+                    window.location.href = "/";
                 },
             }
         ]
