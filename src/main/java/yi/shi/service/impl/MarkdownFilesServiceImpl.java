@@ -64,5 +64,9 @@ public class MarkdownFilesServiceImpl implements MarkdownFilesService {
         return markdownFilesMapper.update(markdownFiles);
     }
 
+    @Override
+    public List<MarkdownFiles> getAllMarkdownFiles() {
+        return markdownFilesMapper.getAllMarkdownFiles();
+    }
 
 }

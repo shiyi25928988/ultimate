@@ -1,6 +1,8 @@
 package yi.shi.pages.normal;
 
+import com.google.inject.Inject;
 import j2html.tags.specialized.*;
+import yi.shi.db.model.MarkdownFiles;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
@@ -11,11 +13,18 @@ import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
+import yi.shi.service.MarkdownFilesService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static j2html.TagCreator.*;
 
 @HttpService
 public class HomePage extends Page {
+
+    @Inject
+    MarkdownFilesService markdownFilesService;
 
     @GET
     @HttpPath(value = "/")
@@ -39,12 +48,19 @@ public class HomePage extends Page {
     protected BodyTag createBody() {
         return body(
             //ResponsiveNav.create("logo", "title", Menu.getMenu()),
-            ResponsiveContainer.create(
-                    ResponsiveCard.create("title", "content"),
-                    ResponsiveCard.create("title", "content")
-                ),
+            ResponsiveContainer.create(getCardsArray()),
                 // 初始化移动端侧边栏的脚本
                 script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
+    }
+
+    private ATag[] getCardsArray(){
+        ATag[] cards = new ATag[0];
+        List<ATag> list = new ArrayList<>();
+        List<MarkdownFiles> mdList = this.markdownFilesService.getAllMarkdownFiles();
+        mdList.forEach(markdownFiles -> {
+            list.add(ResponsiveCard.create(markdownFiles));
+        });
+        return list.toArray(cards);
     }
 
     @Override

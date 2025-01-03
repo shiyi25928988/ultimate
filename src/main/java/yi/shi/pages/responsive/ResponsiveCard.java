@@ -1,26 +1,23 @@
 package yi.shi.pages.responsive;
 
 import static j2html.TagCreator.*;
+
+import j2html.tags.specialized.ATag;
 import j2html.tags.specialized.DivTag;
+import yi.shi.db.model.MarkdownFiles;
 
 public class ResponsiveCard {
     
     
-    public static DivTag create(String title, String content) {
-        return div().withClass("card")
-            .with(
+    public static ATag create(MarkdownFiles markdownFiles) {
+        return a().withHref("/page/markdown?id=" + markdownFiles.getId()).
+                with(div().withClass("card").with(
                 div().withClass("card-content")
                     .with(
-                        span().withClass("card-title").withText(title),
+                        span().withClass("card-title").withText(markdownFiles.getTitle()),
                         img().withSrc("https://picsum.photos/200/300?random"),
-                        p().withText(content)
+                        p().withText(markdownFiles.getContent())
                     )
-                // 在移动端隐藏某些操作按钮
-//                div().withClass("card-action hide-on-small-only")
-//                    .with(
-//                        a().withHref("#").withText("操作1"),
-//                        a().withHref("#").withText("操作2")
-//                    )
-            );
+            )).withTarget("_blank");
     }
 }

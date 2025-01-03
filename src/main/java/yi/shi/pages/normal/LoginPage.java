@@ -37,8 +37,13 @@ public class LoginPage {
                                                                                 label().withFor("username").withText("用户名")
                                                                         ),
                                                                         div().withClass("input-field").with(
-                                                                                input().withType("password").withName("password").withId("password").withClass("validate").withPlaceholder("请输入密码"),
-                                                                                label().withFor("password").withText("密码")
+                                                                                input().withType("password")
+                                                                                        .withName("password")
+                                                                                        .withId("password")
+                                                                                        .withClass("validate")
+                                                                                        .withPlaceholder("请输入密码"),
+                                                                                label().withFor("password")
+                                                                                        .withText("密码")
                                                                         ),
                                                                         div().withClass("center").with(
                                                                                 button().withType("button").withClass("btn waves-effect waves-light").withText("登录").withId("loginButton")

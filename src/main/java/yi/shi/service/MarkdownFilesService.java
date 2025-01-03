@@ -24,5 +24,7 @@ public interface MarkdownFilesService {
 
     int update(MarkdownFiles markdownFiles);
 
+    List<MarkdownFiles> getAllMarkdownFiles();
+
 
 }

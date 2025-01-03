@@ -34,4 +34,7 @@ public interface MarkdownFilesMapper {
 
     @Update("UPDATE markdown_files SET title = #{title}, content = #{content}, update_time = #{updateTime}, shared_token = #{sharedToken} WHERE id = #{id}")
     int update(MarkdownFiles markdownFiles);
+
+    @Select("SELECT * FROM markdown_files ORDER BY id DESC")
+    List<MarkdownFiles> getAllMarkdownFiles();
 }
