@@ -60,5 +60,30 @@ public class MarkdownResources {
         return result;
     }
 
+    @GET
+    @HttpPath(value = "/css/typora.css")
+    public BINARY typoraCss() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream("/static/css/typora.css"));
+        return result;
+    }
 
+    @GET
+    @HttpPath(value = "/css/typo.css")
+    public BINARY typoCss() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.TEXT_CSS);
+        result.setData(this.getClass().getResourceAsStream("/static/css/typo.css"));
+        return result;
+    }
+
+    @GET
+    @HttpPath(value = "/css/MathJax_Main.woff2.ttf")
+    public BINARY MathJax_Main() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.ALL);
+        result.setData(this.getClass().getResourceAsStream("/static/css/MathJax_Main.woff2.ttf"));
+        return result;
+    }
 }

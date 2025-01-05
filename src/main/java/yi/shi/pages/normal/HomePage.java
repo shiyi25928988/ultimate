@@ -48,9 +48,10 @@ public class HomePage extends Page {
     protected BodyTag createBody() {
         return body(
             //ResponsiveNav.create("logo", "title", Menu.getMenu()),
-            ResponsiveContainer.create(getCardsArray()),
+            ResponsiveContainer.create(getCardsArray())
+        ).withClass("grey lighten-4");
                 // 初始化移动端侧边栏的脚本
-                script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
+                //script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
     }
 
     private ATag[] getCardsArray(){

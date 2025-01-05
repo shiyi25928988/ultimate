@@ -31,6 +31,7 @@ public class LoginPage {
                                                 div().withClass("card").with(
                                                         div().withClass("card-content").with(
                                                                 h5().withClass("center").withText("登录"),
+                                                                br(),
                                                                 form().withId("loginForm").with(
                                                                         div().withClass("input-field").with(
                                                                                 input().withType("text").withName("username").withId("username").withClass("validate").withPlaceholder("请输入用户名"),

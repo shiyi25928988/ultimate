@@ -10,6 +10,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.service.MarkdownFilesService;
+import yi.shi.utils.MarkdownUtil;
 
 import java.util.Objects;
 
@@ -68,13 +69,16 @@ public class ShowMarkdownPage extends Page {
 
     @Override
     protected BodyTag createBody() {
+        String markdownContent = markdownFiles.getContent();
+        String toc = MarkdownUtil.generateToc(markdownContent);
+        String htmlContent = MarkdownUtil.renderMarkdown(markdownContent);
+
         return body(
-                        div().withClass("container").with(
-                                h1(markdownFiles.getTitle()),
-                                div().withClass("markdown-content"),
-                                rawHtml(markdownFilesService.renderMarkdown(markdownFiles.getContent()))
-                        )
-                );
+                div().withClass("container").with(
+                        div().withClass("md-toc").with(rawHtml(toc)),
+                        div().withClass("markdown-content").with(rawHtml(htmlContent))
+                )
+        );
     }
 
     @Override

@@ -51,7 +51,7 @@ public class MarkdownFilesServiceImpl implements MarkdownFilesService {
 
     @Override
     public String renderMarkdown(String markdown) {
-        return MarkdownUtil.markdownToHtmlExtensitons(markdown);
+        return MarkdownUtil.renderMarkdown(markdown);
     }
 
     @Override

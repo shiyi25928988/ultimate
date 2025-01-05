@@ -10,14 +10,14 @@ public class ResponsiveCard {
     
     
     public static ATag create(MarkdownFiles markdownFiles) {
-        return a().withHref("/page/markdown?id=" + markdownFiles.getId()).
-                with(div().withClass("card").with(
-                div().withClass("card-content")
-                    .with(
-                        span().withClass("card-title").withText(markdownFiles.getTitle()),
-                        img().withSrc("https://picsum.photos/200/300?random"),
-                        p().withText(markdownFiles.getContent())
-                    )
-            )).withTarget("_blank");
+        return a().withHref("/page/markdown?id=" + markdownFiles.getId())
+                .with(div().withClass("card").with(
+                        div().withClass("card-content")
+                                .with(
+                                        span().withClass("card-title").withText(markdownFiles.getTitle()),
+                                        img().withSrc("https://picsum.photos/200/300?random").withStyle("width: 130px; height: auto;"),
+                                        p().withText(markdownFiles.getContent())
+                                )
+                )).withTarget("_blank");
     }
 }
