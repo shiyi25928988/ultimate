@@ -1,8 +1,7 @@
 package yi.shi.restapi;
 
-import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
-import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
 import yi.shi.data.LoginResult;
 import yi.shi.data.LoginUser;
 import yi.shi.plinth.annotation.http.HttpBody;
@@ -19,8 +18,9 @@ import yi.shi.service.UserService;
 import java.io.IOException;
 
 @HttpService
-@Log4j
 public class LoginApi {
+
+    private static Logger log = org.slf4j.LoggerFactory.getLogger(LoginApi.class);
 
     @Inject
     UserService userService;
@@ -31,7 +31,7 @@ public class LoginApi {
         if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
             String role = userService.getRoleByUsername(loginUser.getUsername());
             Long userId = userService.getUserIdByUsername(loginUser.getUsername());
-            AuthHelper.login(userId, role.split(","));
+            AuthHelper.login(String.valueOf(userId), role.split(","));
             LoginResult result = new LoginResult("LOGIN SUCCESS!");
             return new JSON<>(result);
         }

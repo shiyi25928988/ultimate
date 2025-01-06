@@ -47,7 +47,7 @@ public class MarkdownUtil {
         for (int i = 0; i < headings.size(); i++) {
             int level = headings.get(i).getLevel();
             String id = idGenerator.generateId(headings.get(i).getFirstChild().toString()).replace("textliteral", "");
-            LiTag liTag = li().with(a().withText(id).withHref("#" + id)).withStyle("md-toc-h" + level);
+            LiTag liTag = li().with(a().withText(id).withHref("#" + id)).withClass("md-toc-h" + level);
             liTags[i] = liTag;
         }
         return liTags;

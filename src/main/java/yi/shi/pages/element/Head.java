@@ -16,10 +16,8 @@ public class Head {
                 meta().withName("viewport").withContent("width=device-width, initial-scale=1"),
                 title(title),
                 link().withRel("stylesheet").withHref(MaterializeResources.MATERIALIZE_MIN_CSS),
-                link().withRel("stylesheet").withHref(ToastifyResources.TOASTIFY_CSS),
                 script().withSrc(JqueryResources.JQUERY_MIN_JS),
-                script().withSrc(MaterializeResources.MATERIALIZE_MIN_JS),
-                script().withSrc(ToastifyResources.TOASTIFY_JS)
+                script().withSrc(MaterializeResources.MATERIALIZE_MIN_JS)
         );
     }
 }

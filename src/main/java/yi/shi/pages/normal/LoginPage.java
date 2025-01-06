@@ -74,30 +74,15 @@ public class LoginPage {
                                 "                            contentType: 'application/json',\n" +
                                 "                            data: JSON.stringify(data),\n" +
                                 "                            success: function(response) {\n" +
-                                "                                Toastify({\n" +
-                                "                                    text: '登录成功！',\n" +
-                                "                                    duration: 3000,\n" +
-                                "                                    close: true,\n" +
-                                "                                    gravity: 'top',\n" +
-                                "                                    position: 'center',\n" +
-                                "                                    backgroundColor: '#4caf50',\n" +
-                                "                                    stopOnFocus: true\n" +
-                                "                                }).showToast();\n" +
-//                                "                                alert('登录成功: ' + JSON.stringify(response));\n" +
+                                "                                M.toast({\n" +
+                                "                                    html: '登录成功！',\n" +
+                                "                                })\n" +
                                 "                            window.location.href = '/';\n" +
                                 "                            },\n" +
                                 "                            error: function(xhr, status, error) {\n" +
-                                "                                Toastify({\n" +
-                                "                                    text: '登陆失败: 请确认用户名和密码是否正确 ' + xhr.statusText,\n" +
-                                "                                    duration: 3000,\n" +
-                                "                                    close: true,\n" +
-                                "                                    gravity: 'top',\n" +
-                                "                                    position: 'center',\n" +
-                                "                                    backgroundColor: '#f44336',\n" +
-                                "                                    stopOnFocus: true\n" +
-                                "                                }).showToast();\n" +
-
-//                                "                                alert('登录失败: ' + xhr.status + ' - ' + xhr.responseText);\n" +
+                                "                                M.toast({\n" +
+                                "                                    html: '登陆失败: 请确认用户名和密码是否正确 ' + xhr.statusText,\n" +
+                                "                                })\n" +
                                 "                            }\n" +
                                 "                        });\n" +
                                 "                    });")
