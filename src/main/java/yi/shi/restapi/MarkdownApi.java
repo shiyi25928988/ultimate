@@ -38,6 +38,10 @@ public class MarkdownApi {
         if(Strings.isNullOrEmpty(markdownFiles.getTitle())){
             markdownFiles.setTitle(getFirstLine(markdownFiles.getContent()));
         }
+        String coverUrl = MarkdownUtil.extractFirstImageUrl(markdownFiles.getContent());
+        if(!Strings.isNullOrEmpty(coverUrl)){
+            markdownFiles.setCoverUrl(coverUrl);
+        }
         return new JSON<>(Result.success(markdownFilesService.addNewMarkdown(markdownFiles)));
     }
 

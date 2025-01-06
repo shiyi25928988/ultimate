@@ -15,7 +15,7 @@ public class ResponsiveCard {
                         div().withClass("card-content")
                                 .with(
                                         span().withClass("card-title").withText(markdownFiles.getTitle()),
-                                        img().withSrc("https://picsum.photos/200/300?random").withStyle("width: 130px; height: auto;"),
+                                        img().withSrc(markdownFiles.getCoverUrl()).withStyle("width: 130px; height: auto;"),
                                         p().withText(markdownFiles.getContent())
                                 )
                 )).withTarget("_blank");

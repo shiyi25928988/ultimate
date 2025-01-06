@@ -14,7 +14,7 @@ public interface MarkdownFilesMapper {
     @Select("SELECT MAX(id) FROM markdown_files")
     long selectMaxId();
 
-    @Insert("INSERT INTO markdown_files(user_id, title, content, create_time, update_time) VALUES(#{userId}, #{title}, #{content}, #{createTime}, #{updateTime})")
+    @Insert("INSERT INTO markdown_files(user_id, title, content, cover_url, create_time, update_time) VALUES(#{userId}, #{title}, #{content}, #{coverUrl}, #{createTime}, #{updateTime})")
     int insert(MarkdownFiles markdownFiles);
 
     @Select("SELECT * FROM markdown_files WHERE user_id = #{userId} AND title = #{title}")
@@ -35,6 +35,6 @@ public interface MarkdownFilesMapper {
     @Update("UPDATE markdown_files SET title = #{title}, content = #{content}, update_time = #{updateTime}, shared_token = #{sharedToken} WHERE id = #{id}")
     int update(MarkdownFiles markdownFiles);
 
-    @Select("SELECT * FROM markdown_files ORDER BY id DESC")
+    @Select("SELECT m.id AS id, m.user_id AS userId, m.title AS title, m.content AS content, m.cover_url AS coverUrl, m.create_time AS createTime, m.update_time AS createTime, m.shared_token AS sharedToken FROM markdown_files m ORDER BY id DESC")
     List<MarkdownFiles> getAllMarkdownFiles();
 }

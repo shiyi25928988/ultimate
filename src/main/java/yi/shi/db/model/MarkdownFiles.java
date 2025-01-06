@@ -14,6 +14,7 @@ public class MarkdownFiles {
     private Long userId;
     private String title;
     private String content;
+    private String coverUrl;
     private Date createTime;
     private Date updateTime;
     private String sharedToken;

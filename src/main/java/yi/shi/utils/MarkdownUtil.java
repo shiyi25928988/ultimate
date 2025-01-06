@@ -15,6 +15,8 @@ import org.commonmark.renderer.html.AttributeProviderFactory;
 import org.commonmark.renderer.html.HtmlRenderer;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static j2html.TagCreator.*;
 
@@ -76,5 +78,17 @@ public class MarkdownUtil {
         return sb.toString();
     }
 
+    public static String extractFirstImageUrl(String markdown) {
+        // 定义Markdown图片语法的正则表达式
+        String regex = "!\\[.*?\\]\\((.*?)\\)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(markdown);
+
+        // 查找第一个匹配项
+        if (matcher.find()) {
+            return matcher.group(1);  // 返回第一个捕获组，即图片URL
+        }
+        return "";  // 如果没有找到图片，返回null
+    }
 
 }
