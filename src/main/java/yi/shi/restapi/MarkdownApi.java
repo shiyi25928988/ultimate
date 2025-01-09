@@ -13,7 +13,7 @@ import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.plinth.http.result.JSON;
-import yi.shi.result.ResponseWrapper;
+import yi.shi.data.result.ResponseWrapper;
 import yi.shi.service.MarkdownFilesService;
 import yi.shi.utils.MarkdownUtil;
 

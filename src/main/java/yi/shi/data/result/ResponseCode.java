@@ -1,4 +1,4 @@
-package yi.shi.result;
+package yi.shi.data.result;
 
 public class ResponseCode {
     public static final int SUCCESS = 1;
