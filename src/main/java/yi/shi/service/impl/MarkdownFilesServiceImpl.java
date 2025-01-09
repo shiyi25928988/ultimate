@@ -14,23 +14,32 @@ import yi.shi.utils.MarkdownUtil;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class MarkdownFilesServiceImpl implements MarkdownFilesService {
 
     @Inject
     private MarkdownFilesMapper markdownFilesMapper;
 
+    private static Lock lock = new ReentrantLock();
+
 
     @Override
     public MarkdownFiles addNewMarkdown(MarkdownFiles markdownFiles) {
-        if(Objects.isNull(markdownFiles.getId())) {
-            long id = markdownFilesMapper.selectMaxId() + 1;
-            markdownFiles.setId(id);
-            markdownFilesMapper.insert(markdownFiles);
-        }else{
-            markdownFilesMapper.update(markdownFiles);
+        lock.lock();
+        try {
+            if (Objects.isNull(markdownFiles.getId())) {
+                long id = markdownFilesMapper.selectMaxId() + 1;
+                markdownFiles.setId(id);
+                markdownFilesMapper.insert(markdownFiles);
+            } else {
+                markdownFilesMapper.update(markdownFiles);
+            }
+            return markdownFiles;
+        } finally {
+            lock.unlock();
         }
-        return markdownFiles;
     }
 
     @Override

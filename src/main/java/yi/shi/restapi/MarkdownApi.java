@@ -13,7 +13,7 @@ import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.plinth.http.result.JSON;
-import yi.shi.result.Result;
+import yi.shi.result.ResponseWrapper;
 import yi.shi.service.MarkdownFilesService;
 import yi.shi.utils.MarkdownUtil;
 
@@ -31,7 +31,7 @@ public class MarkdownApi {
 
     @POST
     @HttpPath("/api/markdown/add")
-    public JSON<Result<MarkdownFiles>> addNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
+    public JSON<ResponseWrapper<MarkdownFiles>> addNewMarkdown(@HttpBody MarkdownFiles markdownFiles) {
         String userId = String.valueOf(StpUtil.getLoginId());
         markdownFiles.setUserId(Long.parseLong(userId));
         markdownFiles.setCreateTime(new Date());
@@ -42,7 +42,7 @@ public class MarkdownApi {
         if(!Strings.isNullOrEmpty(coverUrl)){
             markdownFiles.setCoverUrl(coverUrl);
         }
-        return new JSON<>(Result.success(markdownFilesService.addNewMarkdown(markdownFiles)));
+        return new JSON<>(ResponseWrapper.success(markdownFilesService.addNewMarkdown(markdownFiles)));
     }
 
     private String getFirstLine(String markdown) {

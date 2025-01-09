@@ -6,14 +6,14 @@ import com.alibaba.dashscope.common.Message;
 import com.alibaba.dashscope.common.Role;
 import com.alibaba.dashscope.exception.InputRequiredException;
 import com.alibaba.dashscope.exception.NoApiKeyException;
+import yi.shi.db.model.Books;
+import yi.shi.plinth.utils.json.JsonUtils;
 import yi.shi.utils.KeyUtil;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class QianwenProxy {
-
-
-
 
     public static String generate(String prompt) throws NoApiKeyException, InputRequiredException {
         Generation gen = new Generation();
@@ -34,9 +34,6 @@ public class QianwenProxy {
                 .resultFormat(GenerationParam.ResultFormat.MESSAGE)
                 .build();
         return gen.call(param).getOutput().getChoices().get(0).getMessage().getContent();
-
     }
-
-
 
 }
