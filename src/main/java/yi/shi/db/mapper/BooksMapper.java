@@ -1,9 +1,6 @@
 package yi.shi.db.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import yi.shi.db.model.Books;
 
 import java.util.List;
@@ -38,4 +35,13 @@ public interface BooksMapper {
 
     @Select("select * from books oder by id desc")
     List<Books> selectAllBooks();
+
+    @Select("select * from books limit #{page},#{pageSize}")
+    List<Books> selectBooksByPage(int page, int pageSize);
+
+    @Select("select count(*) from books")
+    Long selectBooksCount();
+
+    @Delete("delete from books where id=#{id}")
+    int deleteBooksById(Long id);
 }

@@ -64,4 +64,19 @@ public class BooksServiceImpl implements BooksService {
         return booksMapper.selectBooksByHolderId(holderId);
     }
 
+    @Override
+    public List<Books> getBooksByPage(int page, int pageSize) {
+        return booksMapper.selectBooksByPage(page, pageSize);
+    }
+
+    @Override
+    public Long getBooksCount() {
+        return booksMapper.selectBooksCount();
+    }
+
+    @Override
+    public int deleteBooksById(Long id) {
+        return booksMapper.deleteBooksById(id);
+    }
+
 }

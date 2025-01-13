@@ -1,8 +1,10 @@
 package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
+import yi.shi.pages.component.Input;
 import yi.shi.pages.element.Ajax;
 import yi.shi.pages.element.Head;
+import yi.shi.pages.element.Icon;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -25,30 +27,10 @@ public class UserRegistryPage {
         ContainerTag head = Head.createHead("用户注册");
 
         ContainerTag form = form().withId("registrationForm").withClass("col s12").with(
-                div().withClass("row").with(
-                        div().withClass("input-field col s12").with(
-                                input().withId("username").withType("text").withClass("validate"),
-                                label().withFor("username").withText("用户名")
-                        )
-                ),
-                div().withClass("row").with(
-                        div().withClass("input-field col s12").with(
-                                input().withId("email").withType("email").withClass("validate"),
-                                label().withFor("email").withText("邮箱")
-                        )
-                ),
-                div().withClass("row").with(
-                        div().withClass("input-field col s12").with(
-                                input().withId("password").withType("password").withClass("validate"),
-                                label().withFor("password").withText("密码")
-                        )
-                ),
-                div().withClass("row").with(
-                        div().withClass("input-field col s12").with(
-                                input().withId("confirmPassword").withType("password").withClass("validate"),
-                                label().withFor("confirmPassword").withText("确认密码")
-                        )
-                ),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "username", "用户名", Input.TYPE_TEXT, Icon.icon("account_circle", Icon.PREFIX), false),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "email", "email", Input.TYPE_TEXT, Icon.icon("email", Icon.PREFIX), false),
+                Input.getInput(Input.INPUT_WIDTH_FULL, "password", "密码", Input.TYPE_PASSWORD, false),
+                Input.getInput(Input.INPUT_WIDTH_FULL, "confirmPassword", "确认密码", Input.TYPE_PASSWORD, false),
                 div().withClass("row").with(
                         button().withClass("btn waves-effect waves-light").withType("submit").withName("action").withText("注册").with(
                                 i().withClass("material-icons right").withText("send")

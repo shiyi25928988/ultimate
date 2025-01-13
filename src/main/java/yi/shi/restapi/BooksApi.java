@@ -9,6 +9,7 @@ import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpParam;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
+import yi.shi.plinth.annotation.http.Method.DELETE;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.JSON;
@@ -43,4 +44,17 @@ public class BooksApi {
         Books books = AiBookInfoGenerator.queryBookInfo(bookName);
         return new JSON<>(ResponseWrapper.success(books));
     }
+
+    @GET
+    @HttpPath("/api/books/getBooksCount")
+    public JSON<ResponseWrapper<Long>> getBooksCount() {
+        return new JSON<>(ResponseWrapper.success(booksService.getBooksCount()));
+    }
+
+    @DELETE
+    @HttpPath("/api/books/deleteBooksById")
+    public JSON<ResponseWrapper<Integer>> deleteBooksById(@HttpParam("id") Long id) {
+        return new JSON<>(ResponseWrapper.success(booksService.deleteBooksById(id)));
+    }
+
 }

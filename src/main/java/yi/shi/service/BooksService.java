@@ -23,4 +23,10 @@ public interface BooksService {
 
     List<Books> getBooksByHolderId(Long holderId);
 
+    List<Books> getBooksByPage(int page, int pageSize);
+
+    Long getBooksCount();
+
+    int deleteBooksById(Long id);
+
 }
