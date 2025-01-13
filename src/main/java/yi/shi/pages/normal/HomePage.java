@@ -28,7 +28,7 @@ public class HomePage extends Page {
 
     @GET
     @HttpPath(value = "/")
-    public HTML homePage() {
+    public HTML homePage() throws Exception {
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;

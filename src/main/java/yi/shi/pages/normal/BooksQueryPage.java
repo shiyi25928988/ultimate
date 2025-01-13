@@ -20,7 +20,7 @@ public class BooksQueryPage extends Page {
 
     @GET
     @HttpPath(value = "/page/booksQueryPage")
-    public HTML booksQueryPage() {
+    public HTML booksQueryPage() throws Exception {
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;

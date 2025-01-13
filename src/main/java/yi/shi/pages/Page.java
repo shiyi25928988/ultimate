@@ -10,15 +10,15 @@ import static j2html.TagCreator.html;
 
 public abstract class Page {
 
-    protected HtmlTag createHtml() {
+    protected HtmlTag createHtml() throws Exception{
         return html(createHead(), createHeader(), createBody(), createFooter());
     }
 
-    protected abstract HeadTag createHead();
+    protected abstract HeadTag createHead() throws Exception;
 
-    protected abstract HeaderTag createHeader();
+    protected abstract HeaderTag createHeader() throws Exception;
 
-    protected abstract BodyTag createBody();
+    protected abstract BodyTag createBody() throws Exception;
 
-    protected abstract FooterTag createFooter();
+    protected abstract FooterTag createFooter() throws Exception;
 }

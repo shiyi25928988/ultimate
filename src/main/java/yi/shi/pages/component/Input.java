@@ -23,6 +23,23 @@ public class Input {
     public static final String TYPE_TEL = "tel";
     public static final String TYPE_SEARCH = "search";
 
+    public static DivTag getTextArea(String id, String label, boolean isDisabled) {
+        if(isDisabled) {
+            return div().withClass("row").with(
+                    div().withClass("input-field col s12").with(
+                            textarea().isDisabled().withId(id).withClass("materialize-textarea"),
+                            label().withFor(id).withText(label)
+                    )
+            );
+        }
+        return div().withClass("row").with(
+                div().withClass("input-field col s12").with(
+                        textarea().withId(id).withClass("materialize-textarea"),
+                        label().withFor(id).withText(label)
+                )
+        );
+    }
+
     public static DivTag getInput(String width, String id, String label, String type, boolean isDisabled) {
         if(isDisabled) {
             return div().withClass("row").with(

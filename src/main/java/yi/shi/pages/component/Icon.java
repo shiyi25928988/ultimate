@@ -1,4 +1,4 @@
-package yi.shi.pages.element;
+package yi.shi.pages.component;
 
 import j2html.tags.specialized.ITag;
 
@@ -11,6 +11,8 @@ public class Icon {
     public static String MEDIUM = "medium";
     public static String TINY = "tiny";
     public static String PREFIX = "prefix";
+    public static String LEFT = "left";
+    public static String RIGHT = "right";
 
     public static ITag icon(String icon){
         return i().withClass("material-icons").withText(icon);

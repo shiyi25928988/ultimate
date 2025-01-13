@@ -1,4 +1,4 @@
-package yi.shi.data.result;
+package yi.shi.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

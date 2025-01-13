@@ -2,8 +2,12 @@ package yi.shi.restapi;
 
 import com.alibaba.dashscope.exception.InputRequiredException;
 import com.alibaba.dashscope.exception.NoApiKeyException;
+import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import yi.shi.ai.qianwen.AiBookInfoGenerator;
+import yi.shi.data.BooksPagedParam;
+import yi.shi.data.PagedParam;
+import yi.shi.data.PagedResult;
 import yi.shi.db.model.Books;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpParam;
@@ -13,8 +17,9 @@ import yi.shi.plinth.annotation.http.Method.DELETE;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.JSON;
-import yi.shi.data.result.ResponseWrapper;
+import yi.shi.data.ResponseWrapper;
 import yi.shi.service.BooksService;
+import yi.shi.utils.PageUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,6 +60,20 @@ public class BooksApi {
     @HttpPath("/api/books/deleteBooksById")
     public JSON<ResponseWrapper<Integer>> deleteBooksById(@HttpParam("id") Long id) {
         return new JSON<>(ResponseWrapper.success(booksService.deleteBooksById(id)));
+    }
+
+    @POST
+    @GET
+    @HttpPath("/api/books/getBooksByPage")
+    public JSON<ResponseWrapper<PagedResult<List<Books>>>> getBooksByPage(@HttpBody BooksPagedParam booksPageParam) {
+        List<Books> books;
+        if(!Strings.isNullOrEmpty(booksPageParam.getBookName())){
+            books = booksService.getBooksByName(booksPageParam.getBookName());
+        }else {
+            books = booksService.getAllBooks();
+        }
+        PagedParam pageParam = new PagedParam(booksPageParam.getPage(), booksPageParam.getPageSize());
+        return new JSON<>(ResponseWrapper.success(PageUtil.page(books, pageParam)));
     }
 
 }
