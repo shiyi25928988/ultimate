@@ -10,16 +10,21 @@ import yi.shi.plinth.http.result.BINARY;
 public class JavaScriptAndCss {
 
     @GET
-    @HttpPath(value = "/css/styles.css")
-    public BINARY stylesCss() throws Exception {
+    @HttpPath(value = "/js/SearchBooks.js")
+    public BINARY searchBooksJS() throws Exception {
         BINARY result = new BINARY();
-        result.setMimeType(MimeType.TEXT_CSS);
-        result.setData(this.getClass().getResourceAsStream("/static/css/styles.css"));
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/js/SearchBooks.js"));
         return result;
     }
 
-
-
-
+    @GET
+    @HttpPath(value = "/js/AddNewBook.js")
+    public BINARY addNewBookJS() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/js/AddNewBook.js"));
+        return result;
+    }
 
 }

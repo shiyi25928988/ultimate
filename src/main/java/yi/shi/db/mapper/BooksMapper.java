@@ -33,7 +33,7 @@ public interface BooksMapper {
     @Select("select * from books where id=#{id}")
     Books selectBooksById(Long id);
 
-    @Select("select * from books oder by id desc")
+    @Select("select * from books")
     List<Books> selectAllBooks();
 
     @Select("select * from books limit #{page},#{pageSize}")

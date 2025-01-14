@@ -19,6 +19,7 @@ public class DataSourceModule extends MyBatisModule {
         Names.bindProperties(binder(), System.getProperties());
         bindDataSourceProviderType(PooledDataSourceProvider.class);
         bindTransactionFactoryType(JdbcTransactionFactory.class);
+        mapUnderscoreToCamelCase(true);
         getMapperClasses().forEach(mapperClass -> addMapperClass(mapperClass));
     }
 

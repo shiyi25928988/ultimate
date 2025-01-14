@@ -9,6 +9,7 @@ import yi.shi.data.BooksPagedParam;
 import yi.shi.data.PagedParam;
 import yi.shi.data.PagedResult;
 import yi.shi.db.model.Books;
+import yi.shi.pages.component.BookCard;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpParam;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -29,6 +30,19 @@ public class BooksApi {
 
     @Inject
     BooksService booksService;
+
+    @GET
+    @HttpPath("/api/books/getBooksByName")
+    public JSON<ResponseWrapper<List<Books>>> getBooksByName(@HttpParam("bookname")String bookName) {
+        return new JSON<>(ResponseWrapper.success(booksService.getBooksByName(bookName)));
+    }
+
+    @GET
+    @HttpPath("/api/books/getBooksDivByName")
+    public JSON<ResponseWrapper<String>> getBooksDivByName(@HttpParam("bookname")String bookName) {
+        List<Books> list = booksService.getBooksByName(bookName);
+        return new JSON<>(ResponseWrapper.success(BookCard.createBookCardsList(list).render()));
+    }
 
     @GET
     @HttpPath("/api/books/getAllBooks")

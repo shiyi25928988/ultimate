@@ -61,8 +61,8 @@ public class EditNewBookPage extends Page {
                         form
                 ),
                 BusyIndicator.getBusyIndicator(),
-                script(IOUtils.toString(this.getClass().getResourceAsStream("/js/AddNewBook.js"))
-        ));
+                script().withSrc("/js/AddNewBook.js")
+        );
         return body;
     }
 
