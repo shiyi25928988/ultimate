@@ -1,5 +1,6 @@
 package yi.shi.pages.component;
 
+import j2html.tags.specialized.ATag;
 import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.ITag;
 
@@ -36,6 +37,25 @@ public class Input {
                 div().withClass("input-field col s12").with(
                         textarea().withId(id).withClass("materialize-textarea"),
                         label().withFor(id).withText(label)
+                )
+        );
+    }
+
+    public static DivTag getInputWithButton(String width, String id, String label, String type, ATag button, boolean isDisabled) {
+        if(isDisabled) {
+            return div().withClass("row").with(
+                    div().withClass(width).with(
+                            input().isDisabled().withId(id).withType(type).withClass("validate"),
+                            label().withFor(id).withText(label),
+                            button
+                    )
+            );
+        }
+        return div().withClass("row").with(
+                div().withClass(width).with(
+                        input().withId(id).withType(type).withClass("validate"),
+                        label().withFor(id).withText(label),
+                        button
                 )
         );
     }

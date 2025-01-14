@@ -1,10 +1,12 @@
 package yi.shi.service.impl;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import yi.shi.db.mapper.BooksMapper;
 import yi.shi.db.model.Books;
 import yi.shi.service.BooksService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.locks.Lock;
@@ -22,8 +24,9 @@ public class BooksServiceImpl implements BooksService {
         lock.lock();
         try {
             if (Objects.isNull(books.getId())) {
-                long id = booksMapper.selectMaxId() + 1;
-                books.setId(id);
+                Long owerId = Long.parseLong(String.valueOf(StpUtil.getLoginId()));
+                books.setOwnerId(owerId);
+                books.setCreateTime(new Date());
                 booksMapper.insert(books);
             } else {
                 booksMapper.update(books);

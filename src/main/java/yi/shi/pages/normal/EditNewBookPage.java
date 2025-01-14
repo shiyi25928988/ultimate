@@ -7,6 +7,7 @@ import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.HeaderTag;
 import org.apache.commons.io.IOUtils;
 import yi.shi.pages.Page;
+import yi.shi.pages.component.BusyIndicator;
 import yi.shi.pages.component.Button;
 import yi.shi.pages.component.Input;
 import yi.shi.pages.element.Ajax;
@@ -45,12 +46,12 @@ public class EditNewBookPage extends Page {
     protected BodyTag createBody() throws Exception {
 
         ContainerTag form = form().withId("bookForm").with(
-                Input.getInput(Input.INPUT_WIDTH_FULL, "bookName", "书名", Input.TYPE_TEXT, false),
+                Input.getInputWithButton(Input.INPUT_WIDTH_FULL, "bookName", "书名", Input.TYPE_TEXT, Button.normalButton("获取图书信息","queryBookInfo()"),false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "isbn", "ISBN", Input.TYPE_TEXT, false),
                 Input.getTextArea("digest", "摘要", false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "author", "作者", Input.TYPE_TEXT, false),
                 Input.getTextArea("aboutAuthor", "关于作者", false),
-                Input.getInput(Input.INPUT_WIDTH_FULL, "price", "价格", Input.TYPE_NUMBER, false),
+                Input.getInput(Input.INPUT_WIDTH_FULL, "price", "价格", Input.TYPE_TEXT, false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "coverUrl", "封面URL", Input.TYPE_TEXT, false),
                 Button.normalButton("添加", "addNewBook()")
         );
@@ -59,6 +60,7 @@ public class EditNewBookPage extends Page {
                         h4().withClass("center-align").withText("新增书籍"),
                         form
                 ),
+                BusyIndicator.getBusyIndicator(),
                 script(IOUtils.toString(this.getClass().getResourceAsStream("/js/AddNewBook.js"))
         ));
         return body;

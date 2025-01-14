@@ -5,6 +5,7 @@ import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.HeaderTag;
 import yi.shi.pages.Page;
+import yi.shi.pages.component.BusyIndicator;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
@@ -37,7 +38,9 @@ public class BooksQueryPage extends Page {
 
     @Override
     protected BodyTag createBody() {
-        return body();
+        return body().with(div(
+                BusyIndicator.getBusyIndicator()
+        ));
 //                .withStyle("  body {\n" +
 //                "    display: flex;\n" +
 //                "    min-height: 100vh;\n" +
