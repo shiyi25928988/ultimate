@@ -10,6 +10,7 @@ import yi.shi.pages.component.BusyIndicator;
 import yi.shi.pages.component.Button;
 import yi.shi.pages.component.Input;
 import yi.shi.pages.component.UploadModal;
+import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -68,6 +69,6 @@ public class EditNewBookPage extends Page {
 
     @Override
     protected FooterTag createFooter() {
-        return null;
+        return Footer.createFooter();
     }
 }

@@ -11,9 +11,10 @@ public class Menu {
     private static final Map<String, String> ADMIN_MENU = new LinkedHashMap<>();
     static {
         USER_MENU.put("Home", "/");
-        USER_MENU.put("Image", "/page/imageWall");
-        USER_MENU.put("Markdown", "/page/markdownEditor");
-        USER_MENU.put("Logout", "/api/logout");
+        USER_MENU.put("Books", "/page/booksQueryPage");
+        USER_MENU.put("Add Book", "/page/editNewBook");
+        USER_MENU.put("editor", "/page/markdownEditor");
+        //USER_MENU.put("Logout", "/api/logout");
     }
     static {
         ADMIN_MENU.put("Home", "/");
@@ -24,6 +25,13 @@ public class Menu {
         ADMIN_MENU.put("Logout", "/api/logout");
     }
     public static Map<String, String> getMenu() {
+        if(StpUtil.isLogin()){
+            USER_MENU.put("SignOut", "/api/logout");
+            USER_MENU.remove("SignIn");
+        }else{
+            USER_MENU.put("SignIn", "/page/login");
+            USER_MENU.remove("SignOut");
+        }
 //        if (StpUtil.hasRole("admin")) {
 //            return ADMIN_MENU;
 //        }
