@@ -36,8 +36,10 @@ public class UploadModal {
                                         ),
                                         button("上传")
                                                 .withClass("waves-effect waves-light btn")
-                                                .attr("onclick", "uploadFile()")
-                                ).withAction("#")
+                                                .withType("button")  // 改为button类型
+                                                .attr("onclick", "handleFileUpload(event)")  // 修改处理函数
+                                ).withId("uploadForm")  // 添加表单ID
+                                        .attr("onsubmit", "return false;")  // 阻止默认提交
                         ).withClass("modal-content"),
                         div(
                                 a("关闭")

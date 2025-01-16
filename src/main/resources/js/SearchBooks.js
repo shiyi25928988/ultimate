@@ -12,9 +12,7 @@ $(document).ready(function() {
 function searchBooks() {
     $('#busyIndicator').show();
     var query = $('#search').val();
-    if(query.length != 0){
-        performSearch(query);
-    }
+    performSearch(query);
 }
 
 function performSearch(query) {
@@ -22,10 +20,16 @@ function performSearch(query) {
         url: '/api/books/getBooksDivByName?bookname=' + query,
         type: 'GET',
         success: function(response) {
-            console.log('Search results:', response);
+//            M.toast({
+//                html: "查询成功",
+//            });
             updateBookCards(response);
         },
         error: function(xhr, status, error) {
+            M.toast({
+                html: error,
+                classes: 'red',
+            });
             console.error('Search error:', error);
         },
         complete: function() {
