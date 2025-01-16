@@ -5,12 +5,11 @@ import j2html.tags.specialized.BodyTag;
 import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.HeaderTag;
-import org.apache.commons.io.IOUtils;
 import yi.shi.pages.Page;
 import yi.shi.pages.component.BusyIndicator;
 import yi.shi.pages.component.Button;
 import yi.shi.pages.component.Input;
-import yi.shi.pages.element.Ajax;
+import yi.shi.pages.component.UploadModal;
 import yi.shi.pages.element.Head;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -53,6 +52,7 @@ public class EditNewBookPage extends Page {
                 Input.getTextArea("aboutAuthor", "关于作者", false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "price", "价格", Input.TYPE_TEXT, false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "coverUrl", "封面URL", Input.TYPE_TEXT, false),
+                UploadModal.singleFileUploadFrame(),
                 Button.normalButton("添加", "addNewBook()")
         );
         BodyTag body = body(

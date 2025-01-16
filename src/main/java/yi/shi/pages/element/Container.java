@@ -1,4 +1,4 @@
-package yi.shi.pages.responsive;
+package yi.shi.pages.element;
 
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.style;
@@ -7,7 +7,7 @@ import j2html.tags.DomContent;
 import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.StyleTag;
 
-public class ResponsiveContainer {
+public class Container {
 
     public static DivTag create(DomContent...content) {
         StyleTag inlineStyles = style()

@@ -7,8 +7,8 @@ import yi.shi.pages.Page;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
-import yi.shi.pages.responsive.ResponsiveCard;
-import yi.shi.pages.responsive.ResponsiveContainer;
+import yi.shi.pages.component.MarkDownCard;
+import yi.shi.pages.element.Container;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -48,7 +48,7 @@ public class HomePage extends Page {
     protected BodyTag createBody() {
         return body(
             //ResponsiveNav.create("logo", "title", Menu.getMenu()),
-            ResponsiveContainer.create(getCardsArray())
+            Container.create(getCardsArray())
         ).withClass("grey lighten-4");
                 // 初始化移动端侧边栏的脚本
                 //script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
@@ -59,7 +59,7 @@ public class HomePage extends Page {
         List<ATag> list = new ArrayList<>();
         List<MarkdownFiles> mdList = this.markdownFilesService.getAllMarkdownFiles();
         mdList.forEach(markdownFiles -> {
-            list.add(ResponsiveCard.create(markdownFiles));
+            list.add(MarkDownCard.create(markdownFiles));
         });
         return list.toArray(cards);
     }

@@ -22,6 +22,14 @@ public class Icon {
         return i().withClass("material-icons " + size).withText(icon);
     }
 
+    public static ITag icon(String icon, String size, String direction){
+        return i().withClass("material-icons " + size + " " + direction).withText(icon);
+    }
+
+    public static ITag icon(String icon, String size, String direction, String prefix){
+        return i().withClass("material-icons " + size + " " + direction + " " + prefix).withText(icon);
+    }
+
 
 
 

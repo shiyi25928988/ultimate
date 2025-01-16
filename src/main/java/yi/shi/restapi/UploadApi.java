@@ -5,6 +5,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
+import yi.shi.data.ResponseWrapper;
 import yi.shi.plinth.annotation.Properties;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -14,10 +16,12 @@ import yi.shi.plinth.http.result.JSON;
 import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.utils.ImageCompressor;
 import yi.shi.utils.JpegToWbmp;
+import yi.shi.utils.RandomGenerator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -30,45 +34,34 @@ public class UploadApi {
 
     @POST
     @HttpPath(value = "/api/upload")
-    public JSON<String> upload() throws Exception {
-        HttpServletRequest request = ServletHelper.getRequest();
-        if(ServletFileUpload.isMultipartContent(request)) {
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            List<FileItem> items = upload.parseRequest(request);
-            for (FileItem item : items) {
-                if (!item.isFormField()) {
-                    String fileName = item.getName();
-                    String filePath = UPLOAD_DIRECTORY + File.separator + fileName;
-                    if(isImage(item.getContentType())){
-                        ImageCompressor.compressImage(item.getInputStream(), filePath);
-                    }else {
-                        item.write(new File(filePath));
+    public JSON<ResponseWrapper<List<String>>> upload() {
+        try{
+            HttpServletRequest request = ServletHelper.getRequest();
+            List<String> result = new LinkedList<>();
+            if(ServletFileUpload.isMultipartContent(request)) {
+                DiskFileItemFactory factory = new DiskFileItemFactory();
+                ServletFileUpload upload = new ServletFileUpload(factory);
+                List<FileItem> items = upload.parseRequest(request);
+                for (FileItem item : items) {
+                    if (!item.isFormField()) {
+                        String fileName = item.getName();
+                        String tempPath = RandomGenerator.generateRandomString(4);
+                        FileUtils.forceMkdir(new File(UPLOAD_DIRECTORY + File.separator + tempPath));
+                        String filePath = UPLOAD_DIRECTORY + File.separator + tempPath + File.separator + fileName;
+                        result.add("/static/" + tempPath + "/" + fileName);
+                        if(isImage(item.getContentType())){
+                            ImageCompressor.compressImage(item.getInputStream(), filePath);
+                        }else {
+                            item.write(new File(filePath));
+                        }
                     }
                 }
             }
+            return new JSON<>(ResponseWrapper.success(result));
         }
-        return new JSON<String>("文件上传成功" );
-    }
-
-    @POST
-    @HttpPath(value = "/uploadImage")
-    public JSON<String> uploadImage() throws Exception {
-        HttpServletRequest request = ServletHelper.getRequest();
-        if(ServletFileUpload.isMultipartContent(request)) {
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            List<FileItem> items = upload.parseRequest(request);
-            for (FileItem item : items) {
-                if (!item.isFormField()) {
-                    String fileName = item.getName();
-                    String filePath = UPLOAD_DIRECTORY + File.separator + fileName;
-                    ImageCompressor.compressImage(item.getInputStream(), filePath);
-                            //.convertAndSave(item.getInputStream(), filePath);
-                }
-            }
+        catch (Exception e){
+            return new JSON<>(ResponseWrapper.fail(e.getMessage()));
         }
-        return new JSON<String>("文件上传成功" );
     }
 
     private boolean isImage(String contentType) {

@@ -40,7 +40,12 @@ public class BooksApi {
     @GET
     @HttpPath("/api/books/getBooksDivByName")
     public JSON<ResponseWrapper<String>> getBooksDivByName(@HttpParam("bookname")String bookName) {
-        List<Books> list = booksService.getBooksByName(bookName);
+        List<Books> list;
+        if(Strings.isNullOrEmpty(bookName)){
+            list = booksService.getAllBooks();
+        }else {
+            list = booksService.getBooksByName(bookName);
+        }
         return new JSON<>(ResponseWrapper.success(BookCard.createBookCardsList(list).render()));
     }
 

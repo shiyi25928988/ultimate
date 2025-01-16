@@ -27,4 +27,13 @@ public class JavaScriptAndCss {
         return result;
     }
 
+    @GET
+    @HttpPath(value = "/js/UploadCoverImage.js")
+    public BINARY uploadCoverImage() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/js/UploadCoverImage.js"));
+        return result;
+    }
+
 }
