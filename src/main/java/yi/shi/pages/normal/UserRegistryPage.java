@@ -1,10 +1,7 @@
 package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
-import j2html.tags.specialized.BodyTag;
-import j2html.tags.specialized.FooterTag;
-import j2html.tags.specialized.HeadTag;
-import j2html.tags.specialized.HeaderTag;
+import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
 import yi.shi.pages.component.Button;
 import yi.shi.pages.component.Input;
@@ -40,7 +37,7 @@ public class UserRegistryPage extends Page {
     }
 
     @Override
-    protected BodyTag createBody() {
+    protected MainTag createMain() {
         ContainerTag form = form().withId("registrationForm").withClass("col s6").with(
                 Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "username", "用户名", Input.TYPE_TEXT, Icon.icon("account_circle", Icon.PREFIX), false),
                 Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "email", "email", Input.TYPE_TEXT, Icon.icon("email", Icon.PREFIX), false),
@@ -49,7 +46,7 @@ public class UserRegistryPage extends Page {
                 Button.submitButton("注册")
         );
 
-        BodyTag body = body(
+        MainTag main = main(
                 div().withClass("container").with(
                         h4().withClass("center-align").withText("用户注册"),
                         form
@@ -71,7 +68,7 @@ public class UserRegistryPage extends Page {
                         "                    });\n" +
                         "                });")
                 ));
-        return body;
+        return main;
     }
 
     @Override

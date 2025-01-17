@@ -5,6 +5,7 @@ import j2html.tags.DomContent;
 import j2html.tags.Tag;
 import j2html.tags.specialized.HeaderTag;
 import j2html.tags.specialized.NavTag;
+import yi.shi.pages.component.Dropdown;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -32,13 +33,14 @@ public class Header {
 
     private static DomContent[] getMenuItems(Map<String, String> menuItems) {
         List<DomContent> items = new ArrayList<>();
-        if (menuItems != null) {
-            for (Map.Entry<String, String> entry : menuItems.entrySet()) {
-                items.add(
-                        li(a(entry.getKey()).withHref(entry.getValue()))
-                );
-            }
-        }
+//        if (menuItems != null) {
+//            for (Map.Entry<String, String> entry : menuItems.entrySet()) {
+//                items.add(
+//                        li(a(entry.getKey()).withHref(entry.getValue()))
+//                );
+//            }
+//        }
+        items.add(Dropdown.getMenuDropdown("My", "account_circle", Menu.getMenu()));
         return items.toArray(new DomContent[0]);
     }
 

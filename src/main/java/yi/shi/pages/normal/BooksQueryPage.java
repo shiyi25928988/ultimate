@@ -44,9 +44,8 @@ public class BooksQueryPage extends Page {
     }
 
     @Override
-    protected BodyTag createBody() {
-        return body().with(
-                BusyIndicator.getBusyIndicator(),
+    protected MainTag createMain() throws Exception {
+        return main().with(
                 BookCard.createBookCards(booksService.getAllBooks()));
     }
 

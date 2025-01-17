@@ -68,12 +68,12 @@ public class ShowMarkdownPage extends Page {
     }
 
     @Override
-    protected BodyTag createBody() {
+    protected MainTag createMain() {
         String markdownContent = markdownFiles.getContent();
         String toc = MarkdownUtil.generateToc(markdownContent);
         String htmlContent = MarkdownUtil.renderMarkdown(markdownContent);
 
-        return body(
+        return main(
                 div().withClass("container").with(
                         div().withClass("md-toc").with(rawHtml(toc)),
                         div().withClass("markdown-content").with(rawHtml(htmlContent))

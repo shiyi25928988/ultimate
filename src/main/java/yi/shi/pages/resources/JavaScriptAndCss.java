@@ -10,6 +10,15 @@ import yi.shi.plinth.http.result.BINARY;
 public class JavaScriptAndCss {
 
     @GET
+    @HttpPath(value = "/js/Init.js")
+    public BINARY init() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/js/Init.js"));
+        return result;
+    }
+
+    @GET
     @HttpPath(value = "/js/SearchBooks.js")
     public BINARY searchBooksJS() throws Exception {
         BINARY result = new BINARY();

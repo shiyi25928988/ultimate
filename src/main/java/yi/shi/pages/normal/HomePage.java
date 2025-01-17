@@ -44,9 +44,10 @@ public class HomePage extends Page {
         return Header.createHeader();
     }
 
+
     @Override
-    protected BodyTag createBody() {
-        return body(
+    protected MainTag createMain() {
+        return main(
             //ResponsiveNav.create("logo", "title", Menu.getMenu()),
             Container.create(getCardsArray())
         ).withClass("grey lighten-4");

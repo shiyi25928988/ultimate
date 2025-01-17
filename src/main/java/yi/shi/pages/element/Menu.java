@@ -14,6 +14,8 @@ public class Menu {
         USER_MENU.put("Books", "/page/booksQueryPage");
         USER_MENU.put("Add Book", "/page/editNewBook");
         USER_MENU.put("editor", "/page/markdownEditor");
+        USER_MENU.put("images", "/page/imageWall");
+
         //USER_MENU.put("Logout", "/api/logout");
     }
     static {

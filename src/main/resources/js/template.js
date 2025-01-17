@@ -19,16 +19,22 @@ function template() {
             if (response.code === 1) {
                 M.toast({
                     html: response.message,
+                    classes: 'blue',
+                    completeCallback: function() {
+                        window.location.href = '/';
+                    }
                 });
             } else if (response.code === 0) {
                 M.toast({
                     html: response.message,
+                    classes: 'red',
                 });
             }
         },
         error: function(xhr, status, error) {
             M.toast({
                 html: xhr.statusText,
+                classes: 'red',
             });
         },
         complete: function() {
