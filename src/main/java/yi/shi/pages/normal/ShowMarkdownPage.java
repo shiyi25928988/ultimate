@@ -50,7 +50,10 @@ public class ShowMarkdownPage extends Page {
         return html.setHtmlContent(createHtml().render());
     }
 
-
+    @Override
+    protected BodyTag createBody() {
+        return body().with(createHeader(), createMain(), createFooter());
+    }
 
     @Override
     protected HeadTag createHead() {

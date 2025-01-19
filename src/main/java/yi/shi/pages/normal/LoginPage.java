@@ -86,8 +86,7 @@ public class LoginPage {
                                 "                            }\n" +
                                 "                        });\n" +
                                 "                    });")
-                ),
-                Footer.createFooter()
+                )
         );
     }
 }

@@ -75,6 +75,12 @@ public class BooksApi {
         return new JSON<>(ResponseWrapper.success(booksService.getBooksCount()));
     }
 
+    @GET
+    @HttpPath("/api/books/getBooksById")
+    public JSON<ResponseWrapper<Books>> getBooksById(@HttpParam("id") Long id) {
+        return new JSON<>(ResponseWrapper.success(booksService.getBooksById(id)));
+    }
+
     @DELETE
     @HttpPath("/api/books/deleteBooksById")
     public JSON<ResponseWrapper<Integer>> deleteBooksById(@HttpParam("id") Long id) {

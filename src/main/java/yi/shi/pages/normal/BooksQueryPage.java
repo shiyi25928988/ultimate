@@ -2,11 +2,8 @@ package yi.shi.pages.normal;
 
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
-import org.apache.commons.io.IOUtils;
 import yi.shi.pages.Page;
 import yi.shi.pages.component.BookCard;
-import yi.shi.pages.component.BusyIndicator;
-import yi.shi.pages.element.BookSearchHeader;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
@@ -33,20 +30,32 @@ public class BooksQueryPage extends Page {
     }
     @Override
     protected HeadTag createHead() throws Exception{
-        return Head.createHead("Books").with(
-                script().withSrc(("/js/SearchBooks.js"))
-        );
+        return Head.createHead("Books");
     }
 
     @Override
     protected HeaderTag createHeader() {
-        return BookSearchHeader.createHeader();
+        return Header.createHeader();
     }
 
     @Override
     protected MainTag createMain() throws Exception {
         return main().with(
-                BookCard.createBookCards(booksService.getAllBooks()));
+                div().withClass("container").with(
+                    div().withClass("right").with(
+                        div().withClass("input-field").with(
+                            input().withType("search").withId("search").withPlaceholder("Search books...").attr("aria-label", "Search"),
+                            label().withFor("search").with(
+                                i().withClass("material-icons").withText("search")
+                            ),
+                            i().withClass("material-icons").withText("search").attr("onclick", "searchBooks()")
+                        ),
+                        script().withSrc("/js/SearchBooks.js")
+                    )
+                ).withClass("row")
+        ).with(
+            BookCard.createBookCards(booksService.getAllBooks())
+        );
     }
 
     @Override
