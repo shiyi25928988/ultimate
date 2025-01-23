@@ -7,7 +7,7 @@ import yi.shi.pages.Page;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;
-import yi.shi.pages.component.MarkDownCard;
+import yi.shi.pages.component.card.MarkDownCard;
 import yi.shi.pages.element.Container;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;

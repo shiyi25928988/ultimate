@@ -3,7 +3,7 @@ package yi.shi.pages.normal;
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
-import yi.shi.pages.component.BookCard;
+import yi.shi.pages.component.card.BookCard;
 import yi.shi.pages.element.Footer;
 import yi.shi.pages.element.Head;
 import yi.shi.pages.element.Header;

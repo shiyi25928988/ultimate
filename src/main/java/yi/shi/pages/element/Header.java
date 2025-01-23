@@ -1,15 +1,9 @@
 package yi.shi.pages.element;
 
-import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
-import j2html.tags.Tag;
 import j2html.tags.specialized.HeaderTag;
-import j2html.tags.specialized.NavTag;
-import yi.shi.pages.component.Dropdown;
-import yi.shi.pages.component.SearchInput;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 

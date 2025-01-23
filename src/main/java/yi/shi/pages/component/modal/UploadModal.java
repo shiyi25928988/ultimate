@@ -1,4 +1,4 @@
-package yi.shi.pages.component;
+package yi.shi.pages.component.modal;
 
 import j2html.tags.specialized.DivTag;
 

@@ -1,4 +1,4 @@
-package yi.shi.pages.component;
+package yi.shi.pages.component.card;
 
 import j2html.tags.specialized.DivTag;
 import yi.shi.db.model.Books;
@@ -31,15 +31,17 @@ public class BookCard {
     public static DivTag createBookCard(Books books) {
         return div().with(
                 div().withClass("col s12 m6 l4").with(
-                        div().withClass("card small").with(
-                                div().withClass("card-image").with(
-                                        img().withSrc(books.getCoverUrl()).withAlt(books.getBookName()),
-                                        span().withClass("card-title").withText(books.getBookName())
-                                ),
-                                div().withClass("card-content").with(
-                                        p().withText(books.getAuthor()),
-                                        p().withText(books.getDigest())
-                                )
+                        a().withHref("/page/bookDetailPage?id=" + books.getId()).with(
+                            div().withClass("card medium").with(
+                                    div().withClass("card-image").with(
+                                            img().withSrc(books.getCoverUrl()).withAlt(books.getBookName()),
+                                            span().withClass("card-title").withText(books.getBookName())
+                                    ),
+                                    div().withClass("card-content").with(
+                                            p().withText(books.getAuthor()),
+                                            p().withText(books.getDigest())
+                                    )
+                            )
                         )
                 )
         );
