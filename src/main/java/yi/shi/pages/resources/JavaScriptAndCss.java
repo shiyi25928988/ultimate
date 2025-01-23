@@ -10,6 +10,14 @@ import yi.shi.plinth.http.result.BINARY;
 public class JavaScriptAndCss {
 
     @GET
+    @HttpPath(value = "/js/ImageWall.js")
+    public BINARY materializeCSS() throws Exception {
+        BINARY result = new BINARY();
+        result.setMimeType(MimeType.APPLICATION_JAVASCRIPT);
+        result.setData(this.getClass().getResourceAsStream("/js/ImageWall.js"));
+        return result;
+    }
+    @GET
     @HttpPath(value = "/js/Carousel.js")
     public BINARY carouselJS() throws Exception {
         BINARY result = new BINARY();
