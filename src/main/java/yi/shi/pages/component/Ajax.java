@@ -1,4 +1,4 @@
-package yi.shi.pages.element;
+package yi.shi.pages.component;
 
 public class Ajax {
 

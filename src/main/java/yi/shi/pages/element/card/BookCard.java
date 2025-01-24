@@ -1,4 +1,4 @@
-package yi.shi.pages.component.card;
+package yi.shi.pages.element.card;
 
 import j2html.tags.specialized.DivTag;
 import yi.shi.db.model.Books;

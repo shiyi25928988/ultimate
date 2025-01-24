@@ -1,8 +1,7 @@
-package yi.shi.pages.component;
+package yi.shi.pages.element;
 
 import j2html.tags.specialized.ATag;
 import j2html.tags.specialized.DivTag;
-import j2html.tags.specialized.ImgTag;
 
 import java.util.List;
 

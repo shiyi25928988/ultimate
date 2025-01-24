@@ -1,4 +1,4 @@
-package yi.shi.pages.component.input;
+package yi.shi.pages.element.input;
 
 import j2html.tags.specialized.FormTag;
 

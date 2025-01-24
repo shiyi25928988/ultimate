@@ -1,10 +1,8 @@
-package yi.shi.pages.element;
+package yi.shi.pages.component;
 
-import j2html.tags.ContainerTag;
 import j2html.tags.specialized.HeadTag;
 import yi.shi.pages.resources.JqueryResources;
 import yi.shi.pages.resources.MaterializeResources;
-import yi.shi.pages.resources.ToastifyResources;
 
 import static j2html.TagCreator.*;
 

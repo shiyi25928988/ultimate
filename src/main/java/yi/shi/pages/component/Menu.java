@@ -1,8 +1,7 @@
-package yi.shi.pages.element;
+package yi.shi.pages.component;
 
 import cn.dev33.satoken.stp.StpUtil;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

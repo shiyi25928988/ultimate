@@ -1,4 +1,4 @@
-package yi.shi.pages.element;
+package yi.shi.pages.component;
 
 import static j2html.TagCreator.div;
 import static j2html.TagCreator.style;

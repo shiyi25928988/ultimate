@@ -1,4 +1,4 @@
-package yi.shi.pages.component.card;
+package yi.shi.pages.element.card;
 
 import static j2html.TagCreator.*;
 

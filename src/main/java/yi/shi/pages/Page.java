@@ -1,7 +1,7 @@
 package yi.shi.pages;
 
 import j2html.tags.specialized.*;
-import yi.shi.pages.component.BusyIndicator;
+import yi.shi.pages.element.BusyIndicator;
 
 import static j2html.TagCreator.*;
 

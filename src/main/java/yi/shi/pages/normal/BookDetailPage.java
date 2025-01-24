@@ -7,9 +7,9 @@ import j2html.tags.specialized.HeaderTag;
 import j2html.tags.specialized.MainTag;
 import yi.shi.db.model.Books;
 import yi.shi.pages.Page;
-import yi.shi.pages.element.Footer;
-import yi.shi.pages.element.Head;
-import yi.shi.pages.element.Header;
+import yi.shi.pages.component.Footer;
+import yi.shi.pages.component.Head;
+import yi.shi.pages.component.Header;
 import yi.shi.plinth.annotation.http.HttpParam;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -18,10 +18,7 @@ import yi.shi.plinth.http.result.HTML;
 import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.service.BooksService;
 
-import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 import static j2html.TagCreator.*;
 

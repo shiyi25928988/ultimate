@@ -1,8 +1,7 @@
 package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
-import yi.shi.pages.element.Footer;
-import yi.shi.pages.element.Head;
+import yi.shi.pages.component.Head;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;

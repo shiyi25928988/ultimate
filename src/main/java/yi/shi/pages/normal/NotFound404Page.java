@@ -5,7 +5,7 @@ import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.HeaderTag;
 import j2html.tags.specialized.MainTag;
 import yi.shi.pages.Page;
-import yi.shi.pages.element.Head;
+import yi.shi.pages.component.Head;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;

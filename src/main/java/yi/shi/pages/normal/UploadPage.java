@@ -2,7 +2,7 @@ package yi.shi.pages.normal;
 
 import j2html.tags.ContainerTag;
 import j2html.tags.Tag;
-import yi.shi.pages.element.Head;
+import yi.shi.pages.component.Head;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
