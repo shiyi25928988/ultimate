@@ -46,6 +46,8 @@ public class Header {
                         ).with(
                                 getMenuItems(menuItems)
                         )
+                ).with(
+                        script().withSrc("/js/SideNav.js")
                 )
         );
     }

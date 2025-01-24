@@ -27,6 +27,16 @@ public abstract class Page {
                 createHeader(),
                 createMain(),
                 createFooter()
+        ).with(
+                style("  body {\n" +
+                        "    display: flex;\n" +
+                        "    min-height: 100vh;\n" +
+                        "    flex-direction: column;\n" +
+                        "  }\n" +
+                        "\n" +
+                        "  main {\n" +
+                        "    flex: 1 0 auto;\n" +
+                        "  }")
         );
     }
 }

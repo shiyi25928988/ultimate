@@ -1,3 +1,4 @@
+// Initialize Materialize
 $(document).ready(function() {
     $('#busyIndicator').show();
     M.AutoInit();
