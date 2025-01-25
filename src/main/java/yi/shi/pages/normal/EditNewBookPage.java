@@ -5,7 +5,7 @@ import j2html.tags.specialized.*;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.Button;
 import yi.shi.pages.element.Input;
-import yi.shi.pages.element.modal.UploadModal;
+import yi.shi.pages.element.modal.UploadBookCoverModal;
 import yi.shi.pages.component.Footer;
 import yi.shi.pages.component.Head;
 import yi.shi.pages.component.Header;
@@ -50,7 +50,7 @@ public class EditNewBookPage extends Page {
                 Input.getTextArea("aboutAuthor", "关于作者", false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "price", "价格", Input.TYPE_TEXT, false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "coverUrl", "封面URL", Input.TYPE_TEXT, false),
-                UploadModal.singleFileUploadFrame(),
+                UploadBookCoverModal.singleFileUploadFrame(),
                 Button.normalButton("添加", "addNewBook()")
         );
         MainTag main = main(

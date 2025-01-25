@@ -4,7 +4,7 @@ import j2html.tags.specialized.DivTag;
 
 import static j2html.TagCreator.*;
 
-public class UploadModal {
+public class UploadBookCoverModal {
 
     public static DivTag singleFileUploadFrame() {
         return div(
