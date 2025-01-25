@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserAccount getUserById(Long id) {
+        return userAccountMapper.getUserById(id);
+    }
+
+    @Override
     public int addNewUser(UserAccount userAccount) {
         userAccount.setPasswd(PasswordEncryptor.encryptPassword(userAccount.getPasswd()));
         userAccount.setCreateTime(new Date());

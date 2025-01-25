@@ -8,7 +8,7 @@ public class UploadModal {
 
     public static DivTag singleFileUploadFrame() {
         return div(
-                a("上传文件")
+                a("上传封面图片")
                         .withClass("waves-effect waves-light btn modal-trigger")
                         .withHref("#uploadCoverImagemodal"),
                 div(
@@ -17,7 +17,7 @@ public class UploadModal {
                                 form(
                                         div(
                                                 div(
-                                                        span("文件"),
+                                                        span("选择文件"),
                                                         input().withType("file").withId("fileInput")
                                                 ).withClass("btn"),
                                                 div(

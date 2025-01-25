@@ -2,21 +2,27 @@ package yi.shi.pages.component;
 
 import j2html.tags.DomContent;
 import j2html.tags.specialized.HeaderTag;
+import yi.shi.pages.theme.Color;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static j2html.TagCreator.*;
 
 public class Header {
     public static HeaderTag createHeader() {
-        return generateHeader(Menu.getMenu());
+        return generateHeader(Menu.getMenu(), null);
     }
 
-    private static HeaderTag generateHeader(Map<String, String> menuItems) {
+    public static HeaderTag createHeader(Color color) {
+        return generateHeader(Menu.getMenu(), color);
+    }
+
+    private static HeaderTag generateHeader(Map<String, String> menuItems, Color color) {
         return header().with(
-                nav().withClass("nav-extended").with(
+                nav().withClass("nav-extended "+ (Objects.isNull(color) ? "" : color.getName())).with(
                         div().withClass("nav-wrapper").with(
                                 a().withClass("brand-logo").withHref("#"),
                                 a().withClass("sidenav-trigger").withHref("#").withData("target", "side-nav").with(

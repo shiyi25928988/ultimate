@@ -32,4 +32,7 @@ public interface UserAccountMapper {
 
     @Update("UPDATE user_account SET nick_name = #{nickName}, email = #{email}, phone = #{phone}, address = #{address}, avatar = #{avatar}, token = #{token} WHERE username = #{username}")
     int updateUserInfo(UserAccount userAccount);
+
+    @Select("SELECT * FROM user_account WHERE id = #{id}")
+    UserAccount getUserById(Long id);
 }

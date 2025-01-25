@@ -27,11 +27,11 @@ public enum Orange implements Color{
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public String getValue() {
-        return null;
+        return value;
     }
 }

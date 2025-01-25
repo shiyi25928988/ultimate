@@ -7,6 +7,7 @@ import yi.shi.pages.element.card.BookCard;
 import yi.shi.pages.component.Footer;
 import yi.shi.pages.component.Head;
 import yi.shi.pages.component.Header;
+import yi.shi.pages.theme.Orange;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
@@ -35,7 +36,7 @@ public class BooksQueryPage extends Page {
 
     @Override
     protected HeaderTag createHeader() {
-        return Header.createHeader();
+        return Header.createHeader(Orange.DARKEN_2);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class BooksQueryPage extends Page {
 
     @Override
     protected FooterTag createFooter() {
-        return Footer.createFooter();
+        return Footer.createFooter(Orange.DARKEN_2);
     }
 
 }

@@ -9,6 +9,8 @@ public interface UserService {
 
     String getPasswdByUsername(String username);
 
+    UserAccount getUserById(Long id);
+
     int addNewUser(UserAccount userAccount);
 
     boolean checkUser(String username, String password);
