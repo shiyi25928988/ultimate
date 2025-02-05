@@ -75,4 +75,5 @@ public class UserRegistryPage extends Page {
     protected FooterTag createFooter() {
         return null;
     }
+
 }

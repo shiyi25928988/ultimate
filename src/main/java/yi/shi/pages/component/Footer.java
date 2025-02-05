@@ -1,5 +1,6 @@
 package yi.shi.pages.component;
 
+import com.google.common.base.Strings;
 import j2html.tags.specialized.FooterTag;
 import yi.shi.pages.theme.Color;
 
@@ -10,10 +11,14 @@ import static j2html.TagCreator.*;
 public class Footer {
 
     public static FooterTag createFooter() {
-        return createFooter(null);
+        return createFooter("");
     }
+
     public static FooterTag createFooter(Color color) {
-        return footer().withClass("page-footer "+ (Objects.isNull(color) ? "" : color.getName()) + "").with(
+        return createFooter(Objects.nonNull(color) ? color.getName() : null);
+    }
+    public static FooterTag createFooter(String color) {
+        return footer().withClass("page-footer "+ (Strings.isNullOrEmpty(color) ? "" : color) + "").with(
                 div().withClass("container").with(
                         div().withClass("row").with(
                                 div().withClass("col l6 s12").with(

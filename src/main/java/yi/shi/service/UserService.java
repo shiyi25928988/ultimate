@@ -20,4 +20,6 @@ public interface UserService {
     boolean checkIfUserExist(String username);
 
     Long getUserIdByUsername(String username);
+
+    UserAccount getCurrentUser();
 }

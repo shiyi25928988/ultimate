@@ -1,7 +1,9 @@
 package yi.shi.pages.normal;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
+import yi.shi.db.model.UserAccount;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.card.ImageCard;
 import yi.shi.pages.component.Footer;
@@ -12,6 +14,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.service.ImageService;
+import yi.shi.service.UserService;
 
 import java.util.List;
 
@@ -22,6 +25,9 @@ public class ImageWallPage extends Page {
 
     @Inject
     ImageService imageService;
+
+    @Inject
+    UserService userService;
 
     @GET
     //@AUTH(authUrl = "/page/login")
@@ -38,11 +44,6 @@ public class ImageWallPage extends Page {
     }
 
     @Override
-    protected HeaderTag createHeader() throws Exception {
-        return Header.createHeader();
-    }
-
-    @Override
     protected MainTag createMain() throws Exception {
         List<String> imageUrls = imageService.getImageList();
         return main().with(
@@ -56,7 +57,10 @@ public class ImageWallPage extends Page {
     }
 
     @Override
-    protected FooterTag createFooter() throws Exception {
-        return Footer.createFooter();
+    protected String getThemeColor() throws Exception {
+        if(StpUtil.isLogin()){
+            return userService.getCurrentUser().getThemeColor();
+        }
+        return "";
     }
 }

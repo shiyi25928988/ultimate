@@ -1,7 +1,9 @@
 package yi.shi.pages.normal;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
+import yi.shi.db.model.UserAccount;
 import yi.shi.pages.Page;
 import yi.shi.pages.element.card.BookCard;
 import yi.shi.pages.component.Footer;
@@ -13,6 +15,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.service.BooksService;
+import yi.shi.service.UserService;
 
 import static j2html.TagCreator.*;
 
@@ -21,6 +24,9 @@ public class BooksQueryPage extends Page {
 
     @Inject
     BooksService booksService;
+
+    @Inject
+    UserService userService;
 
     @GET
     @HttpPath(value = "/page/booksQueryPage")
@@ -32,11 +38,6 @@ public class BooksQueryPage extends Page {
     @Override
     protected HeadTag createHead() throws Exception{
         return Head.createHead("Books");
-    }
-
-    @Override
-    protected HeaderTag createHeader() {
-        return Header.createHeader(Orange.DARKEN_2);
     }
 
     @Override
@@ -60,8 +61,11 @@ public class BooksQueryPage extends Page {
     }
 
     @Override
-    protected FooterTag createFooter() {
-        return Footer.createFooter(Orange.DARKEN_2);
+    protected String getThemeColor() throws Exception {
+        if(StpUtil.isLogin()){
+            return userService.getCurrentUser().getThemeColor();
+        }
+        return "";
     }
 
 }

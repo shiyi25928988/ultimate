@@ -1,5 +1,6 @@
 package yi.shi.service.impl;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import yi.shi.db.mapper.UserAccountMapper;
@@ -69,6 +70,15 @@ public class UserServiceImpl implements UserService {
         UserAccount userAccount =userAccountMapper.getUserByUsername(username);
         if(Objects.nonNull(userAccount)){
             return userAccount.getId();
+        }
+        return null;
+    }
+
+    @Override
+    public UserAccount getCurrentUser() {
+        Long id = Long.parseLong(String.valueOf(StpUtil.getLoginId()));
+        if(Objects.nonNull(id)){
+            return userAccountMapper.getUserById(id);
         }
         return null;
     }

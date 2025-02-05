@@ -28,6 +28,6 @@ public class UserAccount {
     private boolean isLock;
     private boolean isDeleted;
     private boolean isOnline;
-    private String theme;
+    private String themeColor;
 
 }

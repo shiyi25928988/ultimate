@@ -1,11 +1,13 @@
 package yi.shi.pages.normal;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.HeaderTag;
 import j2html.tags.specialized.MainTag;
 import yi.shi.db.model.Books;
+import yi.shi.db.model.UserAccount;
 import yi.shi.pages.Page;
 import yi.shi.pages.component.Footer;
 import yi.shi.pages.component.Head;
@@ -17,6 +19,7 @@ import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.service.BooksService;
+import yi.shi.service.UserService;
 
 import java.util.Objects;
 
@@ -30,6 +33,9 @@ public class BookDetailPage extends Page {
     @Inject
     BooksService booksService;
 
+    @Inject
+    UserService userService;
+
     @GET
     @HttpPath(value = "/page/bookDetailPage")
     public HTML bookDetailPage(@HttpParam("id")String id) throws Exception {
@@ -40,7 +46,6 @@ public class BookDetailPage extends Page {
         }else {
             threadLocal.set(books);
         }
-
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -49,11 +54,6 @@ public class BookDetailPage extends Page {
     @Override
     protected HeadTag createHead() throws Exception {
         return Head.createHead("Book Detail");
-    }
-
-    @Override
-    protected HeaderTag createHeader() throws Exception {
-        return Header.createHeader();
     }
 
     @Override
@@ -81,7 +81,11 @@ public class BookDetailPage extends Page {
     }
 
     @Override
-    protected FooterTag createFooter() throws Exception {
-        return Footer.createFooter();
+    protected String getThemeColor() throws Exception {
+        if(StpUtil.isLogin()){
+            return userService.getCurrentUser().getThemeColor();
+        }
+        return "";
     }
+
 }

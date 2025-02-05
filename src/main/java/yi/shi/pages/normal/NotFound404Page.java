@@ -49,4 +49,5 @@ public class NotFound404Page extends Page {
     protected FooterTag createFooter() throws Exception {
         return null;
     }
+
 }

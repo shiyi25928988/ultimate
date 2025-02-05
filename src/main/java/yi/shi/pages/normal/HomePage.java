@@ -1,8 +1,10 @@
 package yi.shi.pages.normal;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import j2html.tags.specialized.*;
 import yi.shi.db.model.MarkdownFiles;
+import yi.shi.db.model.UserAccount;
 import yi.shi.pages.Page;
 import yi.shi.pages.component.Footer;
 import yi.shi.pages.component.Head;
@@ -14,6 +16,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
 import yi.shi.plinth.http.result.HTML;
 import yi.shi.service.MarkdownFilesService;
+import yi.shi.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,9 @@ public class HomePage extends Page {
 
     @Inject
     MarkdownFilesService markdownFilesService;
+
+    @Inject
+    UserService userService;
 
     @GET
     @HttpPath(value = "/")
@@ -38,12 +44,6 @@ public class HomePage extends Page {
     protected HeadTag createHead() {
         return Head.createHead("Home");
     }
-
-    @Override
-    protected HeaderTag createHeader() {
-        return Header.createHeader();
-    }
-
 
     @Override
     protected MainTag createMain() {
@@ -66,7 +66,10 @@ public class HomePage extends Page {
     }
 
     @Override
-    protected FooterTag createFooter() {
-        return Footer.createFooter();
+    protected String getThemeColor() throws Exception {
+        if(StpUtil.isLogin()){
+            return userService.getCurrentUser().getThemeColor();
+        }
+        return "";
     }
 }

@@ -1,6 +1,9 @@
 package yi.shi.pages;
 
 import j2html.tags.specialized.*;
+import yi.shi.db.model.UserAccount;
+import yi.shi.pages.component.Footer;
+import yi.shi.pages.component.Header;
 import yi.shi.pages.element.BusyIndicator;
 
 import static j2html.TagCreator.*;
@@ -13,12 +16,19 @@ public abstract class Page {
 
     protected abstract HeadTag createHead() throws Exception;
 
-    protected abstract HeaderTag createHeader() throws Exception;
+    protected HeaderTag createHeader() throws Exception{
+        return Header.createHeader(getThemeColor());
+    }
 
     protected abstract MainTag createMain() throws Exception;
 
-    protected abstract FooterTag createFooter() throws Exception;
+    protected FooterTag createFooter() throws Exception{
+        return Footer.createFooter(getThemeColor());
+    }
 
+    protected String getThemeColor() throws Exception {
+        return "";
+    }
 
     protected BodyTag createBody() throws Exception{
         return body().with(
