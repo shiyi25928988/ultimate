@@ -33,7 +33,12 @@ public class LoginPage {
                                                                 br(),
                                                                 form().withId("loginForm").with(
                                                                         div().withClass("input-field").with(
-                                                                                input().withType("text").withName("username").withId("username").withClass("validate").withPlaceholder("请输入用户名"),
+                                                                                input().withType("text")
+                                                                                        .withName("username")
+                                                                                        .withId("username")
+                                                                                        .withClass("validate")
+                                                                                        .withPlaceholder("请输入用户名")
+                                                                                        .attr("autocomplete", "username"),
                                                                                 label().withFor("username").withText("用户名")
                                                                         ),
                                                                         div().withClass("input-field").with(
@@ -41,7 +46,8 @@ public class LoginPage {
                                                                                         .withName("password")
                                                                                         .withId("password")
                                                                                         .withClass("validate")
-                                                                                        .withPlaceholder("请输入密码"),
+                                                                                        .withPlaceholder("请输入密码")
+                                                                                        .attr("autocomplete", "current-password"),
                                                                                 label().withFor("password")
                                                                                         .withText("密码")
                                                                         ),
