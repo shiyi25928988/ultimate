@@ -3,7 +3,7 @@ package yi.shi.restapi;
 import cn.dev33.satoken.stp.StpUtil;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
-import yi.shi.data.CommonParam;
+import yi.shi.data.query.IdQueryParam;
 import yi.shi.db.model.MarkdownFiles;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpParam;
@@ -77,7 +77,7 @@ public class MarkdownApi {
 
     @POST
     @HttpPath("/api/markdown/share")
-    public JSON<String> shareMarkdown(@HttpBody CommonParam param) throws Exception{
+    public JSON<String> shareMarkdown(@HttpBody IdQueryParam param) throws Exception{
         MarkdownFiles markdownFiles = markdownFilesService.selectById(param.getId());
         if(Objects.isNull(markdownFiles)){
             throw new Exception("Markdown not found");

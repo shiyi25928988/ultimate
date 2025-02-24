@@ -2,8 +2,8 @@ package yi.shi.restapi;
 
 import com.google.inject.Inject;
 import org.slf4j.Logger;
-import yi.shi.data.LoginResult;
-import yi.shi.data.LoginUser;
+import yi.shi.data.result.LoginResult;
+import yi.shi.data.req.LoginReq;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
@@ -27,7 +27,7 @@ public class LoginApi {
 
     @POST
     @HttpPath(value = "/api/login")
-    public JSON<LoginResult> login(@HttpBody LoginUser loginUser) throws IOException {
+    public JSON<LoginResult> login(@HttpBody LoginReq loginUser) throws IOException {
         if(userService.checkUser(loginUser.getUsername(), loginUser.getPassword())){
             String role = userService.getRoleByUsername(loginUser.getUsername());
             Long userId = userService.getUserIdByUsername(loginUser.getUsername());

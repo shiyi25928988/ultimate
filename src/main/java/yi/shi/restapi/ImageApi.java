@@ -1,17 +1,13 @@
 package yi.shi.restapi;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.eclipse.jetty.servlet.ServletHandler;
-import yi.shi.data.ImageUrl;
+import yi.shi.data.result.ImageUrlResult;
 import yi.shi.plinth.annotation.Properties;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.GET;
-import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.JSON;
 import yi.shi.plinth.servlet.ServletHelper;
-import yi.shi.plinth.utils.json.JsonUtils;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -29,13 +25,13 @@ public class ImageApi {
     @GET
     @HttpPath(value = "/api/getImages")
     public JSON<Object> getImages(){
-        List<ImageUrl> list = new ArrayList<>();
+        List<ImageUrlResult> list = new ArrayList<>();
 
         try (Stream<Path> paths = Files.walk(Paths.get(UPLOAD_DIRECTORY))) {
             // 获取所有文件的文件名并打印
             paths.filter(Files::isRegularFile)
                     .map(path -> path.getFileName().toString())
-                    .forEach(file-> list.add(new ImageUrl("/static/" + file)));
+                    .forEach(file-> list.add(new ImageUrlResult("/static/" + file)));
         } catch (IOException e) {
             e.printStackTrace();
         }

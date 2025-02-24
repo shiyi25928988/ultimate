@@ -1,4 +1,4 @@
-package yi.shi.data;
+package yi.shi.data.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-public class CommonParam {
-    long id;
+public class BooksPagedQueryParam extends PagedQueryParam {
+    private String bookName;
 }

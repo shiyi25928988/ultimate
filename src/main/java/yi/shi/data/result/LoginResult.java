@@ -1,4 +1,4 @@
-package yi.shi.data;
+package yi.shi.data.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ImageUrl {
-
-    String url;
+public class LoginResult {
+    String result;
 }

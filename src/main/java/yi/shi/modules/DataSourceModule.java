@@ -8,8 +8,6 @@ import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 import org.reflections.util.ConfigurationBuilder;
-import yi.shi.db.mapper.MarkdownFilesMapper;
-import yi.shi.db.mapper.UserAccountMapper;
 
 import java.util.Set;
 

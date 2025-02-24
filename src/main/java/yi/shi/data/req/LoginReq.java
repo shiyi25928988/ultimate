@@ -1,4 +1,4 @@
-package yi.shi.data;
+package yi.shi.data.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LoginResult {
-    String result;
+public class LoginReq {
+
+    String username;
+    String password;
 }

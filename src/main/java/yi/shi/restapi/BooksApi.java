@@ -5,9 +5,9 @@ import com.alibaba.dashscope.exception.NoApiKeyException;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import yi.shi.ai.qianwen.AiBookInfoGenerator;
-import yi.shi.data.BooksPagedParam;
-import yi.shi.data.PagedParam;
-import yi.shi.data.PagedResult;
+import yi.shi.data.query.BooksPagedQueryParam;
+import yi.shi.data.query.PagedQueryParam;
+import yi.shi.data.result.PagedQueryResult;
 import yi.shi.db.model.Books;
 import yi.shi.pages.element.card.BookCard;
 import yi.shi.plinth.annotation.http.HttpBody;
@@ -90,14 +90,14 @@ public class BooksApi {
     @POST
     @GET
     @HttpPath("/api/books/getBooksByPage")
-    public JSON<ResponseWrapper<PagedResult<List<Books>>>> getBooksByPage(@HttpBody BooksPagedParam booksPageParam) {
+    public JSON<ResponseWrapper<PagedQueryResult<List<Books>>>> getBooksByPage(@HttpBody BooksPagedQueryParam booksPageParam) {
         List<Books> books;
         if(!Strings.isNullOrEmpty(booksPageParam.getBookName())){
             books = booksService.getBooksByName(booksPageParam.getBookName());
         }else {
             books = booksService.getAllBooks();
         }
-        PagedParam pageParam = new PagedParam(booksPageParam.getPage(), booksPageParam.getPageSize());
+        PagedQueryParam pageParam = new PagedQueryParam(booksPageParam.getPageNum(), booksPageParam.getPageSize());
         return new JSON<>(ResponseWrapper.success(PageUtil.page(books, pageParam)));
     }
 

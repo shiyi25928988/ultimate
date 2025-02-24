@@ -1,4 +1,4 @@
-package yi.shi.data;
+package yi.shi.data.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class PagedResult <T>{
+public class PagedQueryResult<T>{
     private int page;
     private int pageSize;
     private long total;

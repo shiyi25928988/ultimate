@@ -1,4 +1,4 @@
-package yi.shi.data;
+package yi.shi.data.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LoginUser {
-
-    String username;
-    String password;
+public class IdQueryParam {
+    long id;
 }
