@@ -4,6 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * {
+ *     "data": {},
+ *     "message": "success",
+ *     "code": 1
+ * }
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
