@@ -1,0 +1,23 @@
+package yi.shi.db.mapper;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
+import yi.shi.db.model.Images;
+
+@Mapper
+public interface ImagesMapper {
+
+    @Insert("INSERT INTO images(album_id, image_url, owner_id, create_time) VALUES(#{albumId}, #{imageUrl}, #{ownerId}, #{createTime})")
+    int insert(Images images);
+
+    @Update("UPDATE images SET album_id = #{albumId}, image_url = #{imageUrl}, owner_id = #{ownerId}, create_time = #{createTime} WHERE id = #{id}")
+    int update(Images images);
+
+    @Delete("DELETE FROM images WHERE id = #{id}")
+    int deleteById(Long id);
+
+    @Delete("DELETE FROM images WHERE album_id = #{albumId}")
+    int deleteByAlbumId(Long albumId);
+}

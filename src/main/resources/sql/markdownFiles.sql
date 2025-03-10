@@ -11,5 +11,4 @@ CREATE TABLE `markdown_files` (
 )
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=29
 ;
