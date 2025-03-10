@@ -91,7 +91,7 @@ public class LoginPage {
                                 "                            }\n" +
                                 "                        });\n" +
                                 "                    });")
-                )
+                ).withStyle("display: flex; min-height: 100vh; align-items: center; justify-content: center;")
         );
     }
 }
