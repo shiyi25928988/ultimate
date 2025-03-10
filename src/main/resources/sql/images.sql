@@ -1,4 +1,4 @@
-CREATE TABLE `images` (
+CREATE TABLE IF NOT EXISTS `images` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`album_id` BIGINT(19) NOT NULL,
 	`image_url` VARCHAR(500) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',

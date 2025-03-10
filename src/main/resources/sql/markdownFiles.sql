@@ -1,4 +1,4 @@
-CREATE TABLE `markdown_files` (
+CREATE TABLE IF NOT EXISTS `markdown_files` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`user_id` BIGINT(19) NOT NULL DEFAULT '0',
 	`title` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',

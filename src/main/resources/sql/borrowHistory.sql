@@ -1,4 +1,4 @@
-CREATE TABLE `borrow_history` (
+CREATE TABLE IF NOT EXISTS `borrow_history` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`book_id` BIGINT(19) NOT NULL,
 	`borrower_id` BIGINT(19) NOT NULL,

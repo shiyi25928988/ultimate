@@ -1,4 +1,4 @@
-CREATE TABLE `user_account` (
+CREATE TABLE IF NOT EXISTS `user_account` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`passwd` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',

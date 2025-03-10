@@ -1,4 +1,4 @@
-CREATE TABLE `books` (
+CREATE TABLE IF NOT EXISTS `books` (
 	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
 	`book_name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`isbn` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
