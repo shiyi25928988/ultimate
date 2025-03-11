@@ -11,10 +11,10 @@ import java.util.List;
 @Mapper
 public interface MarkdownFilesMapper {
 
-    @Select("SELECT MAX(id) FROM markdown_files")
+    @Select("SELECT COALESCE(MAX(id), 0) FROM markdown_files")
     long selectMaxId();
 
-    @Insert("INSERT INTO markdown_files(user_id, title, content, cover_url, create_time, update_time) VALUES(#{userId}, #{title}, #{content}, #{coverUrl}, #{createTime}, #{updateTime})")
+    @Insert("INSERT INTO markdown_files(id, user_id, title, content, cover_url, create_time, update_time) VALUES(#{id}, #{userId}, #{title}, #{content}, #{coverUrl}, #{createTime}, #{updateTime})")
     int insert(MarkdownFiles markdownFiles);
 
     @Select("SELECT * FROM markdown_files WHERE user_id = #{userId} AND title = #{title}")

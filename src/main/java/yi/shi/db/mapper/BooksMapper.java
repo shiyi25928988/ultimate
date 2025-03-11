@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface BooksMapper {
 
-    @Select("SELECT MAX(id) FROM books")
+    @Select("SELECT COALESCE(MAX(id), 0) FROM books")
     long selectMaxId();
 
     @Insert("insert into books(id,book_name,isbn,digest,author,about_author,price,cover_url,owner_id,holder_id,create_time) " +

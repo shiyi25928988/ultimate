@@ -27,6 +27,7 @@ public class BooksServiceImpl implements BooksService {
                 Long owerId = Long.parseLong(String.valueOf(StpUtil.getLoginId()));
                 books.setOwnerId(owerId);
                 books.setCreateTime(new Date());
+                books.setId(booksMapper.selectMaxId() + 1);
                 booksMapper.insert(books);
             } else {
                 booksMapper.update(books);
