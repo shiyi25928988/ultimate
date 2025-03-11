@@ -32,7 +32,7 @@ public class BookCard {
         return div().with(
                 div().withClass("col s12 m6 l4").with(
                         a().withHref("/page/bookDetailPage?id=" + books.getId()).with(
-                            div().withClass("card medium").with(
+                            div().withClass("card hoverable medium").with(
                                     div().withClass("card-image").with(
                                             img().withSrc(books.getCoverUrl()).withAlt(books.getBookName()),
                                             span().withClass("card-title").withText(books.getBookName())
