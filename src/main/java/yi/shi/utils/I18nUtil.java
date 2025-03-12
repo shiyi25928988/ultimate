@@ -2,8 +2,6 @@ package yi.shi.utils;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.google.common.base.Strings;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import yi.shi.plinth.servlet.ServletHelper;
 
 import java.io.UnsupportedEncodingException;
@@ -18,6 +16,9 @@ public class I18nUtil {
     private static Map<String, String> localeMap =  new ConcurrentHashMap<>();
 
     public static void setLocale(String locale){
+        if(!StpUtil.isLogin()){
+            return;
+        }
         localeMap.put(String.valueOf(StpUtil.getLoginId()), locale);
     }
 
