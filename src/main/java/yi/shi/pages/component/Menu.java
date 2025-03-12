@@ -1,6 +1,7 @@
 package yi.shi.pages.component;
 
 import cn.dev33.satoken.stp.StpUtil;
+import yi.shi.utils.I18nUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class Menu {
         USER_MENU.put("Books", "/page/booksQueryPage");
         USER_MENU.put("Add Book", "/page/editNewBook");
         USER_MENU.put("editor", "/page/markdownEditor");
-        USER_MENU.put("images", "/page/imageWall");
+        USER_MENU.put(I18nUtil.getMessage("album"), "/page/albums");
         USER_MENU.put("Profile", "/page/myProfile");
 
         //USER_MENU.put("Logout", "/api/logout");
