@@ -1,10 +1,20 @@
 package yi.shi.pages.element.card;
 
 import j2html.tags.specialized.DivTag;
+import yi.shi.db.model.Books;
+
+import java.util.List;
 
 import static j2html.TagCreator.*;
 
 public class GeneralCard {
+
+    public static DivTag createCardsDivTag(List<CardData> cardDataList) {
+        DivTag[] divTags = new DivTag[cardDataList.size()];
+        cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createLargeCard(card));
+        return div().with(divTags);
+    }
+
     public static DivTag createLargeCard(CardData cardData) {
         return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), "large");
     }
