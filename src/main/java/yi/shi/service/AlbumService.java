@@ -16,7 +16,8 @@ public interface AlbumService {
 
     Album getAlbumById(Long id);
 
+    List<Album> getAllAlbums();
+
     List<Album> getAlbumsByName(String albumName);
 
-    List<Images> getImagesByAlbumId(Long albumId);
 }

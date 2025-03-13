@@ -3,9 +3,7 @@ package yi.shi.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import yi.shi.db.mapper.AlbumMapper;
-import yi.shi.db.mapper.ImagesMapper;
 import yi.shi.db.model.Album;
-import yi.shi.db.model.Images;
 import yi.shi.service.AlbumService;
 
 import java.util.Collections;
@@ -19,9 +17,6 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Inject
     private AlbumMapper albumMapper;
-
-    @Inject
-    private ImagesMapper imagesMapper;
 
     private static Lock lock = new ReentrantLock();
 
@@ -49,21 +44,28 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public void deleteAlbum(Long id) {
-
+        albumMapper.deleteById(id);
     }
 
     @Override
     public Album getAlbumById(Long id) {
+        if (Objects.nonNull(id)) {
+            return albumMapper.selectById(id);
+        }
         return null;
     }
 
     @Override
-    public List<Album> getAlbumsByName(String albumName) {
-        return Collections.emptyList();
+    public List<Album> getAllAlbums() {
+        return albumMapper.selectAllAlbums();
     }
 
     @Override
-    public List<Images> getImagesByAlbumId(Long albumId) {
+    public List<Album> getAlbumsByName(String albumName) {
+        if (Objects.nonNull(albumName)) {
+            return albumMapper.selectAlbumsByName(albumName);
+        }
         return Collections.emptyList();
     }
+
 }

@@ -20,3 +20,4 @@ crawler/
 *.tar
 *.log
 .vscode/
+*.java~

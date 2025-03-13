@@ -3,6 +3,8 @@ package yi.shi.db.mapper;
 import org.apache.ibatis.annotations.*;
 import yi.shi.db.model.Album;
 
+import java.util.List;
+
 @Mapper
 public interface AlbumMapper {
 
@@ -20,5 +22,11 @@ public interface AlbumMapper {
 
     @Select("SELECT * FROM album WHERE id = #{id}")
     Album selectById(Long id);
+
+    @Select("SELECT * FROM album WHERE album_name like concat('%',#{albumName},'%')")
+    List<Album> selectAlbumsByName(String albumName);
+
+    @Select("SELECT * FROM album")
+    List<Album> selectAllAlbums();
 
 }

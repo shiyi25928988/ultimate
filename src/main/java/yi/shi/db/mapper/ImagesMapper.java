@@ -7,6 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface ImagesMapper {
+    @Select("SELECT COALESCE(MAX(id), 0) FROM images")
+    long selectMaxId();
 
     @Insert("INSERT INTO images(album_id, image_url, owner_id, create_time) VALUES(#{albumId}, #{imageUrl}, #{ownerId}, #{createTime})")
     int insert(Images images);
