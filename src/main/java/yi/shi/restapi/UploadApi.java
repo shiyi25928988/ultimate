@@ -11,7 +11,7 @@ import yi.shi.plinth.annotation.http.HttpService;
 import yi.shi.plinth.annotation.http.Method.POST;
 import yi.shi.plinth.http.result.JSON;
 import yi.shi.plinth.servlet.ServletHelper;
-import yi.shi.utils.ImageCompressor;
+import yi.shi.utils.ImageUtil;
 import yi.shi.utils.RandomGenerator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +46,7 @@ public class UploadApi {
                         String filePath = UPLOAD_DIRECTORY + File.separator + tempPath + File.separator + fileName;
                         result.add("/static/" + tempPath + "/" + fileName);
                         if(isImage(item.getContentType())){
-                            ImageCompressor.compressImage(item.getInputStream(), filePath);
+                            ImageUtil.compressImage(item.getInputStream(), filePath);
                         }else {
                             item.write(new File(filePath));
                         }
