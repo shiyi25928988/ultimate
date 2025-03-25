@@ -8,21 +8,22 @@ import static j2html.TagCreator.*;
 
 public class GeneralCardContainer {
 
-    public static DivTag createGeneralCardContainer(List<CardData> cardDataList) {
+    public static DivTag createLargeCardContainer(List<CardData> cardDataList) {
         return div().withClass("row").with(
                 div().withId("cardContainer").withClass("container section")
-                .with(createGeneralCardList(cardDataList)));
+                .with(GeneralCard.createCardsDivTag(cardDataList, GeneralCard.CARD_SIZE_LARGE)));
     }
 
-    private static DivTag createGeneralCardList(List<CardData> cardDataList) {
-        DivTag[] divTags = new DivTag[cardDataList.size()];
-        for (int i = 0; i < cardDataList.size(); i++) {
-            divTags[i] = createGeneralCard(cardDataList.get(i));
-        }
-        return div().with(divTags);
+    public static DivTag createMediumCardContainer(List<CardData> cardDataList) {
+        return div().withClass("row").with(
+                div().withId("cardContainer").withClass("container section")
+                .with(GeneralCard.createCardsDivTag(cardDataList, GeneralCard.CARD_SIZE_MEDIUM)));
     }
 
-    private static DivTag createGeneralCard(CardData cardData) {
-        return div().with(GeneralCard.createLargeCard(cardData));
+    public static DivTag createSmallCardContainer(List<CardData> cardDataList) {
+        return div().withClass("row").with(
+                div().withId("cardContainer").withClass("container section")
+                .with(GeneralCard.createCardsDivTag(cardDataList, GeneralCard.CARD_SIZE_SMALL)));
     }
+
 }

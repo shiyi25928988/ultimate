@@ -9,34 +9,39 @@ import static j2html.TagCreator.*;
 
 public class GeneralCard {
 
-    public static DivTag createCardsDivTag(List<CardData> cardDataList) {
+    public static final String CARD_SIZE_LARGE = "large";
+    public static final String CARD_SIZE_SMALL = "small";
+    public static final String CARD_SIZE_MEDIUM = "medium";
+
+    public static DivTag createCardsDivTag(List<CardData> cardDataList, String cardSize) {
         DivTag[] divTags = new DivTag[cardDataList.size()];
-        cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createLargeCard(card));
+        switch (cardSize) {
+            case CARD_SIZE_LARGE:
+                cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createLargeCard(card));
+                break;
+            case CARD_SIZE_SMALL:
+                cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createSmallCard(card));
+                break;
+            case CARD_SIZE_MEDIUM:
+                cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createMediumCard(card));
+                break;
+            default:
+                cardDataList.forEach(card -> divTags[cardDataList.indexOf(card)] = createMediumCard(card));
+                break;
+        }
         return div().with(divTags);
     }
 
-    public static DivTag createLargeCard(CardData cardData) {
-        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), "large");
+    private static DivTag createLargeCard(CardData cardData) {
+        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), CARD_SIZE_LARGE);
     }
 
-    public static DivTag createLargeCard(String title, String content, String imageUrl, String linkUrl) {
-        return createCard(title, content, imageUrl, linkUrl, "large");
+    private static DivTag createSmallCard(CardData cardData) {
+        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), CARD_SIZE_SMALL);
     }
 
-    public static DivTag createSmallCard(CardData cardData) {
-        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), "small");
-    }
-
-    public static DivTag createSmallCard(String title, String content, String imageUrl, String linkUrl) {
-        return createCard(title, content, imageUrl, linkUrl, "small");
-    }
-
-    public static DivTag createMediumCard(CardData cardData) {
-        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), "medium");
-    }
-
-    public static DivTag createMediumCard(String title, String content, String imageUrl, String linkUrl) {
-        return createCard(title, content, imageUrl, linkUrl, "medium");
+    private static DivTag createMediumCard(CardData cardData) {
+        return createCard(cardData.getTitle(), cardData.getContent(), cardData.getImageUrl(), cardData.getLinkUrl(), CARD_SIZE_MEDIUM);
     }
 
     private static DivTag createCard(String title, String content, String imageUrl, String linkUrl, String cardSize) {

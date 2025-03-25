@@ -47,11 +47,7 @@ public class AlbumsPage extends Page {
         for (Album album : albums) {
             cards.add(new CardData(album.getAlbumName(), album.getAlbumDesc(), album.getCoverUrl(), "/page/albumDetailPage?id=" + album.getId()));
         }
-        if (albums != null) {
-            return main().with(
-                    GeneralCard.createCardsDivTag(cards)
-            );
-        }
+
 
         return null;
     }
