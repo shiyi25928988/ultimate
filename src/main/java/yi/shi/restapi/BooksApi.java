@@ -1,7 +1,5 @@
 package yi.shi.restapi;
 
-import com.alibaba.dashscope.exception.InputRequiredException;
-import com.alibaba.dashscope.exception.NoApiKeyException;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import yi.shi.ai.qianwen.AiBookInfoGenerator;
@@ -62,12 +60,12 @@ public class BooksApi {
     }
 
 
-    @GET
-    @HttpPath("/api/AI/queryInfoByBookName")
-    public JSON<ResponseWrapper<Books>> queryInfoByBookName(@HttpParam("bookname")String bookName) throws NoApiKeyException, InputRequiredException, IOException {
-        Books books = AiBookInfoGenerator.queryBookInfo(bookName);
-        return new JSON<>(ResponseWrapper.success(books));
-    }
+//    @GET
+//    @HttpPath("/api/AI/queryInfoByBookName")
+//    public JSON<ResponseWrapper<Books>> queryInfoByBookName(@HttpParam("bookname")String bookName) throws NoApiKeyException, InputRequiredException, IOException {
+//        Books books = AiBookInfoGenerator.queryBookInfo(bookName);
+//        return new JSON<>(ResponseWrapper.success(books));
+//    }
 
     @GET
     @HttpPath("/api/books/getBooksCount")
