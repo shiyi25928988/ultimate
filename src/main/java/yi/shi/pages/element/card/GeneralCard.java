@@ -1,7 +1,6 @@
 package yi.shi.pages.element.card;
 
 import j2html.tags.specialized.DivTag;
-import yi.shi.db.model.Books;
 
 import java.util.List;
 
