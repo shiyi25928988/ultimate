@@ -1,8 +1,9 @@
 package yi.shi.restapi;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import yi.shi.data.ResponseWrapper;
 import yi.shi.plinth.annotation.Properties;
@@ -14,17 +15,15 @@ import yi.shi.plinth.servlet.ServletHelper;
 import yi.shi.utils.ImageUtil;
 import yi.shi.utils.RandomGenerator;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.HashSet;
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @HttpService
 public class UploadApi {
 
-    @Properties("server.resources.folder")
+    @Properties("resources.folder")
     private String UPLOAD_DIRECTORY;
 
 
@@ -34,9 +33,9 @@ public class UploadApi {
         try{
             HttpServletRequest request = ServletHelper.getRequest();
             List<String> result = new LinkedList<>();
-            if(ServletFileUpload.isMultipartContent(request)) {
-                DiskFileItemFactory factory = new DiskFileItemFactory();
-                ServletFileUpload upload = new ServletFileUpload(factory);
+            if(JakartaServletFileUpload.isMultipartContent(request)) {
+                DiskFileItemFactory factory = DiskFileItemFactory.builder().get() ;
+                JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
                 List<FileItem> items = upload.parseRequest(request);
                 for (FileItem item : items) {
                     if (!item.isFormField()) {
@@ -45,10 +44,10 @@ public class UploadApi {
                         FileUtils.forceMkdir(new File(UPLOAD_DIRECTORY + File.separator + tempPath));
                         String filePath = UPLOAD_DIRECTORY + File.separator + tempPath + File.separator + fileName;
                         result.add("/static/" + tempPath + "/" + fileName);
-                        if(isImage(item.getContentType())){
+                        if(ImageUtil.isImage(item.getContentType())){
                             ImageUtil.compressImage(item.getInputStream(), filePath);
                         }else {
-                            item.write(new File(filePath));
+                            item.write(Path.of(filePath));
                         }
                     }
                 }
@@ -60,16 +59,6 @@ public class UploadApi {
         }
     }
 
-    private boolean isImage(String contentType) {
-        Set<String> imageTypes = new HashSet<>();
-        imageTypes.add("image/jpg");
-        imageTypes.add("image/jpeg");
-        imageTypes.add("image/png");
-        imageTypes.add("image/gif");
-        imageTypes.add("image/bmp");
-        imageTypes.add("image/tiff");
-        imageTypes.add("image/webp");
-        return imageTypes.contains(contentType);
-    }
+
 
 }

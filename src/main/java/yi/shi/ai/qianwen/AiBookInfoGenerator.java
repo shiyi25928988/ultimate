@@ -7,7 +7,7 @@ import com.alibaba.dashscope.common.Role;
 import com.alibaba.dashscope.exception.InputRequiredException;
 import com.alibaba.dashscope.exception.NoApiKeyException;
 import yi.shi.db.model.Books;
-import yi.shi.plinth.utils.json.JsonUtils;
+import yi.shi.plinth.utils.JsonUtils;
 import yi.shi.utils.KeyUtil;
 
 import java.io.IOException;

@@ -1,5 +1,6 @@
 package yi.shi.restapi;
 
+import com.google.inject.Inject;
 import yi.shi.data.ResponseWrapper;
 import yi.shi.data.query.IdQueryParam;
 import yi.shi.db.model.Album;
@@ -14,7 +15,6 @@ import yi.shi.plinth.http.result.JSON;
 import yi.shi.service.AlbumService;
 import yi.shi.service.ImagesService;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @HttpService
