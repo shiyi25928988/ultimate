@@ -14,6 +14,7 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.plugin.version>3.1.0</maven.plugin.version>
+    <commonmark.version>0.27.0</commonmark.version>
   </properties>
   <dependencies>
     <dependency>
@@ -106,17 +107,17 @@
     <dependency>
       <groupId>org.commonmark</groupId>
       <artifactId>commonmark</artifactId>
-      <version>0.21.0</version>
+      <version>${commonmark.version}</version>
     </dependency>
     <dependency>
       <groupId>org.commonmark</groupId>
       <artifactId>commonmark-ext-gfm-tables</artifactId>
-      <version>0.21.0</version>
+      <version>${commonmark.version}</version>
     </dependency>
     <dependency>
       <groupId>org.commonmark</groupId>
       <artifactId>commonmark-ext-heading-anchor</artifactId>
-      <version>0.21.0</version>
+      <version>${commonmark.version}</version>
     </dependency>
     <dependency>
       <groupId>com.alibaba</groupId>
