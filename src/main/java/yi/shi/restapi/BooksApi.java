@@ -9,7 +9,7 @@ import yi.shi.data.query.BooksPagedQueryParam;
 import yi.shi.data.query.PagedQueryParam;
 import yi.shi.data.result.PagedQueryResult;
 import yi.shi.db.model.Books;
-import yi.shi.pages.element.card.BookCard;
+import yi.shi.view.element.card.BookCard;
 import yi.shi.plinth.annotation.http.HttpBody;
 import yi.shi.plinth.annotation.http.HttpParam;
 import yi.shi.plinth.annotation.http.HttpPath;
