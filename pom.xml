@@ -20,12 +20,6 @@
       <groupId>yi.shi</groupId>
       <artifactId>plinth</artifactId>
       <version>jre-21</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>reactive-streams</artifactId>
-          <groupId>org.reactivestreams</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.mybatis</groupId>
