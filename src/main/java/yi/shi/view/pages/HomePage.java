@@ -6,6 +6,7 @@ import j2html.tags.specialized.*;
 import yi.shi.db.model.MarkdownFiles;
 import yi.shi.view.Page;
 import yi.shi.view.base.Head;
+import yi.shi.view.element.button.FloatingActionButton;
 import yi.shi.view.element.card.MarkDownCard;
 import yi.shi.view.base.Container;
 import yi.shi.plinth.annotation.http.HttpPath;
@@ -49,7 +50,8 @@ public class HomePage extends Page {
     protected MainTag createMain() {
         return main(
             //ResponsiveNav.create("logo", "title", Menu.getMenu()),
-            Container.create(getCardsArray())
+            Container.create(getCardsArray()),
+                FloatingActionButton.createFloatingActionButton()
         ).withClass("grey lighten-4");
                 // 初始化移动端侧边栏的脚本
                 //script().withText("document.addEventListener('DOMContentLoaded', function() { var elems = document.querySelectorAll('.sidenav'); var instances = M.Sidenav.init(elems); });"));
