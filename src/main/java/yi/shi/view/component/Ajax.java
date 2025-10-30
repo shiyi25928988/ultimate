@@ -1,7 +1,9 @@
 package yi.shi.view.component;
 
+import lombok.extern.slf4j.Slf4j;
 import yi.shi.plinth.utils.JsonUtils;
 
+@Slf4j
 public class Ajax {
 
     public static String getAjax(String url, Object  data){
@@ -44,7 +46,9 @@ public class Ajax {
                         console.error('请求失败:', error);
                     }
                 });
-                """.format(url, method, data);
+                """.formatted(url, method, data);
+
+        log.info("ajax: {}", ajax);
         return ajax;
     }
 }
