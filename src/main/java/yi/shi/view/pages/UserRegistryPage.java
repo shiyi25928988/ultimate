@@ -41,8 +41,8 @@ public class UserRegistryPage extends Page {
     @Override
     protected MainTag createMain() {
         ContainerTag form = form().withId("registrationForm").withClass("col s6").with(
-                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "username", "用户名", Input.TYPE_TEXT, Icon.icon("account_circle", Icon.PREFIX), false),
-                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "email", "email", Input.TYPE_TEXT, Icon.icon("email", Icon.PREFIX), false),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "username", "用户名", Input.TYPE_TEXT, Icon.prefixIcon("account_circle"), false),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "email", "email", Input.TYPE_TEXT, Icon.prefixIcon("email"), false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "password", "密码", Input.TYPE_PASSWORD, false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "confirmPassword", "确认密码", Input.TYPE_PASSWORD, false),
                 Button.submitButton("注册")

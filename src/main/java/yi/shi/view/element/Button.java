@@ -21,7 +21,7 @@ public class Button {
                 button()
                 .withType("submit")
                 .withClass("btn waves-effect waves-light").withName("action").withText(text).with(
-                        Icon.icon("send", Icon.RIGHT)
+                        Icon.icon("send", Icon.Direction.RIGHT)
                 )
             );
     }
