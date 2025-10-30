@@ -42,6 +42,8 @@ public class UserRegistryPage extends Page {
     protected MainTag createMain() {
         ContainerTag form = form().withId("registrationForm").withClass("col s6").with(
                 Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "username", "用户名", Input.TYPE_TEXT, Icon.prefixIcon("account_circle"), false),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "nickName", "昵称", Input.TYPE_TEXT, Icon.prefixIcon("account_circle"), false),
+                Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "phone", "手机", Input.TYPE_TEXT, Icon.prefixIcon("phone"), false),
                 Input.getInputWithIcon(Input.INPUT_WIDTH_FULL, "email", "email", Input.TYPE_TEXT, Icon.prefixIcon("email"), false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "password", "密码", Input.TYPE_PASSWORD, false),
                 Input.getInput(Input.INPUT_WIDTH_FULL, "confirmPassword", "确认密码", Input.TYPE_PASSWORD, false),
@@ -58,6 +60,7 @@ public class UserRegistryPage extends Page {
                             $('#registrationForm').submit(function(event) {
                                 event.preventDefault();
                                 var username = $('#username').val();
+                                var phone = $('#phone').val();
                                 var email = $('#email').val();
                                 var password = $('#password').val();
                                 var confirmPassword = $('#confirmPassword').val();

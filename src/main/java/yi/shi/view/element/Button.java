@@ -16,11 +16,11 @@ public class Button {
         return a().withClass("btn waves-effect waves-light").withText(buttonText).with(icon);
     }
 
-    public static DivTag submitButton(String text) {
+    public static DivTag submitButton(String buttonText) {
         return div().withClass("row").with(
                 button()
                 .withType("submit")
-                .withClass("btn waves-effect waves-light").withName("action").withText(text).with(
+                .withClass("btn waves-effect waves-light").withName("action").withText(buttonText).with(
                         Icon.icon("send", Icon.Direction.RIGHT)
                 )
             );
