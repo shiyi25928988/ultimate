@@ -1,30 +1,50 @@
 package yi.shi.view.component;
 
+import yi.shi.plinth.utils.JsonUtils;
+
 public class Ajax {
 
-    public static String getAjax(String url, String data){
-        String ajax = "$.ajax({\n" +
-                "    url: '" + url + "',\n" +
-                "    method: 'POST',\n" +
-                "    data: JSON.stringify(" + data + "),\n" +
-                "    success: function(response) {\n" +
-                "        if (response.code === 1) {\n" +
-                "            M.toast({\n" +
-                "                html: response.message,\n" +
-                "             });\n" +
-                "        } else if (response.code === 0) {\n" +
-                "             M.toast({\n" +
-                "                 html: response.message,\n" +
-                "             });\n" +
-                "        }\n" +
-                "    },\n" +
-                "    error: function(xhr, status, error) {\n" +
-                "             M.toast({\n" +
-                "                 html: xhr.statusText,\n" +
-                "             });\n" +
-                "        console.error('请求失败:', error);\n" +
-                "    }\n" +
-                "});";
+    public static String getAjax(String url, Object  data){
+        return getAjaxFunction(url, "GET", JsonUtils.toJson(data));
+    }
+    public static String getAjax(String url, String  data){
+        return getAjaxFunction(url, "GET", data);
+    }
+
+    public static String postAjax(String url, Object  data){
+        return getAjaxFunction(url, "POST", JsonUtils.toJson(data));
+    }
+
+    public static String postAjax(String url, String  data){
+        return getAjaxFunction(url, "POST", data);
+    }
+
+    private static String getAjaxFunction(String url, String method, String data){
+        String ajax =
+                """
+                    $.ajax({
+                    url: '%s',
+                    method: '%s',
+                    data: JSON.stringify(%s),
+                    success: function(response) {
+                        if (response.code === 1) {
+                            M.toast({
+                                html: response.message,
+                             });
+                        } else if (response.code === 0) {
+                             M.toast({
+                                 html: response.message,
+                             });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                             M.toast({
+                                 html: xhr.statusText,
+                             });
+                        console.error('请求失败:', error);
+                    }
+                });
+                """.format(url, method, data);
         return ajax;
     }
 }

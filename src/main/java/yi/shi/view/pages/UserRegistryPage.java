@@ -64,7 +64,7 @@ public class UserRegistryPage extends Page {
                         "                            return;\n" +
                         "                        }\n" +
                         "\n" +
-                        "                        // 发送 AJAX 请求\n" + Ajax.getAjax("/api/user/add", "{username: username, email: email, passwd: password}") +
+                        "                        // 发送 AJAX 请求\n" + Ajax.postAjax("/api/user/add", "{username: username, email: email, passwd: password}") +
                         "                    });\n" +
                         "                });")
                 ));
