@@ -1,4 +1,4 @@
-package yi.shi.view.component;
+package yi.shi.view.base;
 
 import cn.dev33.satoken.stp.StpUtil;
 import yi.shi.utils.I18nUtil;

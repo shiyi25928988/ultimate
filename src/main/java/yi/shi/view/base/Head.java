@@ -1,4 +1,4 @@
-package yi.shi.view.component;
+package yi.shi.view.base;
 
 import j2html.tags.specialized.HeadTag;
 import yi.shi.view.resources.JqueryResources;

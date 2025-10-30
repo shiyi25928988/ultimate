@@ -1,4 +1,4 @@
-package yi.shi.view.component;
+package yi.shi.view.base;
 
 import com.google.common.base.Strings;
 import j2html.tags.specialized.FooterTag;

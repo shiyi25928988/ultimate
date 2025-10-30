@@ -8,7 +8,7 @@ import yi.shi.view.Page;
 import yi.shi.view.element.Button;
 import yi.shi.view.element.Input;
 import yi.shi.view.element.modal.UploadBookCoverModal;
-import yi.shi.view.component.Head;
+import yi.shi.view.base.Head;
 import yi.shi.plinth.annotation.auth.AUTH;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;

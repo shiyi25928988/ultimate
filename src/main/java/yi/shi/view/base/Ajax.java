@@ -1,4 +1,4 @@
-package yi.shi.view.component;
+package yi.shi.view.base;
 
 import lombok.extern.slf4j.Slf4j;
 import yi.shi.plinth.utils.JsonUtils;

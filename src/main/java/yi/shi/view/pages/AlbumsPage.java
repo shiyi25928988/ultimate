@@ -7,7 +7,7 @@ import j2html.tags.specialized.MainTag;
 import yi.shi.db.model.Album;
 import yi.shi.service.UserService;
 import yi.shi.view.Page;
-import yi.shi.view.component.Head;
+import yi.shi.view.base.Head;
 import yi.shi.view.element.card.CardData;
 import yi.shi.plinth.annotation.http.HttpPath;
 import yi.shi.plinth.annotation.http.HttpService;

@@ -6,7 +6,7 @@ import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.MainTag;
 import yi.shi.db.model.UserAccount;
 import yi.shi.view.Page;
-import yi.shi.view.component.Head;
+import yi.shi.view.base.Head;
 import yi.shi.view.element.Input;
 import yi.shi.view.element.image.ImageUploadAndPreview;
 import yi.shi.plinth.annotation.auth.AUTH;

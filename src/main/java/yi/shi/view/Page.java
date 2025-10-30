@@ -1,8 +1,8 @@
 package yi.shi.view;
 
 import j2html.tags.specialized.*;
-import yi.shi.view.component.Footer;
-import yi.shi.view.component.Header;
+import yi.shi.view.base.Footer;
+import yi.shi.view.base.Header;
 import yi.shi.view.element.BusyIndicator;
 
 import static j2html.TagCreator.*;
