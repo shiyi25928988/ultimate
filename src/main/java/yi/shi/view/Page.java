@@ -9,6 +9,12 @@ import static j2html.TagCreator.*;
 
 public abstract class Page {
 
+    protected String themeColor = "";
+
+    protected void setThemeColor(String themeColor) {
+        this.themeColor = themeColor;
+    }
+
     protected HtmlTag createHtml() throws Exception{
         return html(createHead(), createBody());
     }
@@ -25,8 +31,8 @@ public abstract class Page {
         return Footer.createFooter(getThemeColor());
     }
 
-    protected String getThemeColor() throws Exception {
-        return "";
+    private String getThemeColor() throws Exception {
+        return themeColor;
     }
 
     protected BodyTag createBody() throws Exception{

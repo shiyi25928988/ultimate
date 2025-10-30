@@ -41,6 +41,9 @@ public class BookDetailPage extends Page {
         }else {
             threadLocal.set(books);
         }
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -73,14 +76,6 @@ public class BookDetailPage extends Page {
                         )
                 )
         );
-    }
-
-    @Override
-    protected String getThemeColor() throws Exception {
-        if(StpUtil.isLogin()){
-            return userService.getCurrentUser().getThemeColor();
-        }
-        return "";
     }
 
 }

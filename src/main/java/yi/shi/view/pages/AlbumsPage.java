@@ -1,9 +1,11 @@
 package yi.shi.view.pages;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.inject.Inject;
 import j2html.tags.specialized.HeadTag;
 import j2html.tags.specialized.MainTag;
 import yi.shi.db.model.Album;
+import yi.shi.service.UserService;
 import yi.shi.view.Page;
 import yi.shi.view.component.Head;
 import yi.shi.view.element.card.CardData;
@@ -22,10 +24,15 @@ public class AlbumsPage extends Page {
     @Inject
     AlbumService albumService;
 
+    @Inject
+    UserService userService;
+
     @GET
     @HttpPath(value = "/page/albums")
     public HTML albumsPage() throws Exception {
-
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;

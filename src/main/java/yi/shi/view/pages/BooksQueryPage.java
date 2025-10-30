@@ -27,6 +27,9 @@ public class BooksQueryPage extends Page {
     @GET
     @HttpPath(value = "/page/booksQueryPage")
     public HTML booksQueryPage() throws Exception {
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -54,14 +57,6 @@ public class BooksQueryPage extends Page {
         ).with(
             BookCard.createBookCards(booksService.getAllBooks())
         );
-    }
-
-    @Override
-    protected String getThemeColor() throws Exception {
-        if(StpUtil.isLogin()){
-            return userService.getCurrentUser().getThemeColor();
-        }
-        return "";
     }
 
 }

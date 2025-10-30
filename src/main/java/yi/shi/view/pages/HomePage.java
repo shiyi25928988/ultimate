@@ -32,6 +32,9 @@ public class HomePage extends Page {
     @GET
     @HttpPath(value = "/")
     public HTML homePage() throws Exception {
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -60,13 +63,5 @@ public class HomePage extends Page {
             list.add(MarkDownCard.create(markdownFiles));
         });
         return list.toArray(cards);
-    }
-
-    @Override
-    protected String getThemeColor() throws Exception {
-        if(StpUtil.isLogin()){
-            return userService.getCurrentUser().getThemeColor();
-        }
-        return "";
     }
 }

@@ -28,6 +28,9 @@ public class MyProfilePage extends Page {
     @AUTH(authUrl = "/page/login")
     @HttpPath(value = "/page/myProfile")
     public HTML myProfilePage() throws Exception {
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -56,14 +59,6 @@ public class MyProfilePage extends Page {
                 )
         );
 
-    }
-
-    @Override
-    protected String getThemeColor() throws Exception {
-        if(StpUtil.isLogin()){
-            return userService.getCurrentUser().getThemeColor();
-        }
-        return "";
     }
 
 }

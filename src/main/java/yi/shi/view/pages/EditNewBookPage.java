@@ -28,6 +28,9 @@ public class EditNewBookPage extends Page {
     @HttpPath(value = "/page/editNewBook")
     @AUTH(authUrl = "/page/login")
     public HTML editNewBookPage() throws Exception {
+        if(StpUtil.isLogin()) {
+            super.setThemeColor(userService.getCurrentUser().getThemeColor());
+        }
         HTML html = new HTML();
         html.setHtmlContent(createHtml().render());
         return html;
@@ -60,14 +63,6 @@ public class EditNewBookPage extends Page {
                 script().withSrc("/js/AddNewBook.js")
         );
         return main;
-    }
-
-    @Override
-    protected String getThemeColor() throws Exception {
-        if(StpUtil.isLogin()){
-            return userService.getCurrentUser().getThemeColor();
-        }
-        return "";
     }
 
 }
